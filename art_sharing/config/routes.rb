@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   resources :artworks, only: [:create, :destroy, :show, :update]
 
   resources :artwork_shares, only: [:create, :destroy]
+
+  resources :comments, only: [:index, :create, :destroy]
 end
