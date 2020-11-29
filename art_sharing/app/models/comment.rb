@@ -8,4 +8,7 @@ class Comment < ApplicationRecord
     belongs_to :artwork,
         foreign_key: :artwork_id
 
+    has_many :likes,
+        as: :likeable
+
 end
