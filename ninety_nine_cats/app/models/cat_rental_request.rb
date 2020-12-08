@@ -21,6 +21,27 @@ class CatRentalRequest < ApplicationRecord
 
     after_initialize :assign_pending_status
 
+    def approve!
+        transaction do
+            self.status = 'APPROVED'
+            self.save!
+            overlapping_pending_requests.each {|req| req.deny!}
+        end
+    end
+
+    def deny!
+        self.status = 'DENIED'
+        self.save!
+    end
+
+    def approved?
+        self.status == 'APPROVED'
+    end
+
+    def denied?
+        self.status == 'DENIED'
+    end
+
     private
     def assign_pending_status
         self.status ||= 'PENDING'
@@ -33,6 +54,10 @@ class CatRentalRequest < ApplicationRecord
             .where.not('start_date > :end_date OR end_date > :start_date',
                 start_date: self.start_date,
                 end_date: self.end_date)
+    end
+
+    def overlapping_pending_requests
+        overlapping_requests.where('status = \'PENDING\'')
     end
 
 end

@@ -6,4 +6,7 @@
             <li><%= cat.name %> - <%=  link_to 'more info', cat_url(cat.id)%></li>
         <% end %>
     </ul>
+
+    <br>
+    <%=  link_to 'Create a Cat Rental Request', new_cat_rental_request_url %>
 </body>
