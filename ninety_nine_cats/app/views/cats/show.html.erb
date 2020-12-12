@@ -1,5 +1,9 @@
 <h1><%= @cat.name %></h1>
 
+<% if @cat.owner == current_user %>
+    <a href="<%= edit_cat_url(@cat) %>">Edit <%= @cat.name %></a>
+<% end %>
+
 <body>
     <ul>
         <li>Age: <%= @cat.age %></li>
@@ -11,15 +15,18 @@
     <br>
     <h3>Rental Requests for <%= @cat.name %></h3>
     <ul>
-        <% CatRentalRequest.where(cat_id: @cat.id).each do |req|%>
+        <% cat_rental_requests = CatRentalRequest.where(cat_id: @cat.id).includes(:user)%>
+        <% cat_rental_requests.each do |req|%>
             <% if req.status == 'PENDING' %>
-            <li>Start: <%=  req.start_date %>, End: <%= req.end_date %>
-                <form action="<%= approve_cat_rental_request_url(req.id) %>" method="post">
-                    <input type="submit" value="Approve">
-                </form>
-                <form action="<%= deny_cat_rental_request_url(req.id) %>" method="post">
-                    <input type="submit" value="Deny">
-                </form>
+            <li>Start: <%=  req.start_date %>, End: <%= req.end_date %>, Request made by: <%= req.user.user_name %>
+                <% if @cat.owner == current_user %>
+                    <form action="<%= approve_cat_rental_request_url(req.id) %>" method="post">
+                        <input type="submit" value="Approve">
+                    </form>
+                    <form action="<%= deny_cat_rental_request_url(req.id) %>" method="post">
+                        <input type="submit" value="Deny">
+                    </form>
+                <% end %>
             </li>
             <% end %>
         <% end %>
