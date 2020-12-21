@@ -1,0 +1,8 @@
+<form action="<%= notes_url %>" method="post">
+    <%= auth_token %>
+    <input type="hidden" name="note[track_id]" value="<%= @track.id %>">
+    <br>
+    <textarea id="note_text" name="note[text]"></textarea> 
+    <br>
+    <input type="submit" value="Save note">
+</form>

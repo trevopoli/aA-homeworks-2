@@ -14,3 +14,11 @@
     <input type="hidden" name="_method" value="delete">
     <input type="submit" value="Delete track">
 </form>
+
+<br>
+<h3>Add a track note for <%= @track.title %>: </h3>
+<%= render "notes/form" %>
+<br>
+<h3>Track notes: </h3>
+<br>
+<%= render "notes/note" %>
