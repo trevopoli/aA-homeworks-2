@@ -1,4 +1,5 @@
 class AlbumsController < ApplicationController
+    before_action :require_user!, only: %i(new create show destroy)
 
     def new
         @band = Band.find_by(id: params[:band_id])

@@ -1,0 +1,16 @@
+<h1><%= @track.title %> by <%= @track.band.name %></h1>
+<h2>Track <%= @track.ord %> on <%= @track.album.title %></h2>
+
+<br>
+<h3>Lyrics</h3>
+<br>
+<%= @track.lyrics %>
+
+<br>
+
+<form action="<%= track_url(@track.id) %>" method="post">
+    <%= auth_token %>
+    <br>
+    <input type="hidden" name="_method" value="delete">
+    <input type="submit" value="Delete track">
+</form>

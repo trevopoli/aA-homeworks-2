@@ -1,4 +1,5 @@
 class BandsController < ApplicationController
+    before_action :require_user!, only: %i(show new create edit update destroy)
 
     def index
         @bands = Band.all
