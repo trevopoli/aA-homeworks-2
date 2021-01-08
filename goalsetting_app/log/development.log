@@ -112,3 +112,143 @@ Processing by UsersController#show as HTML
 Completed 200 OK in 6ms (Views: 4.2ms | ActiveRecord: 0.8ms | Allocations: 5959)
 
 
+Started GET "/users/new" for 127.0.0.1 at 2021-01-07 20:54:06 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 0.6ms | Allocations: 181)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 19ms (Views: 8.1ms | ActiveRecord: 0.0ms | Allocations: 9805)
+
+
+Started POST "/users" for 127.0.0.1 at 2021-01-07 20:54:21 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"authenticity_token"=>"FG2EZSesvh0aKodJ2jeh4howyZzL97QmpG1MuhQ5wmQrpfcMGznfbewrqNitw3O9Kon1mxEB5Z0jvZezlQUQaQ==", "user"=>{"email"=>"brian456@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[35m (0.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (5.2ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "brian456@gmail.com"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "eF17EGAoE8Wd9qThIrkxlg"], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[36mUser Create (0.9ms)[0m  [1m[32mINSERT INTO "users" ("email", "password_digest", "session_token", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["email", "brian456@gmail.com"], ["password_digest", "$2a$12$3H.w1wJRplrI0nwQcq0/0egtdz0HgF2sSSxEGzZf4HwijVO6ZJJGS"], ["session_token", "eF17EGAoE8Wd9qThIrkxlg"], ["created_at", "2021-01-08 01:54:21.652882"], ["updated_at", "2021-01-08 01:54:21.652882"]]
+  ↳ app/controllers/users_controller.rb:12:in `create'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/users_controller.rb:12:in `create'
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 297ms (ActiveRecord: 7.8ms | Allocations: 5085)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2021-01-07 20:54:21 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:22:in `show'
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 0.2ms | Allocations: 94)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "eF17EGAoE8Wd9qThIrkxlg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+Completed 200 OK in 8ms (Views: 5.3ms | ActiveRecord: 1.2ms | Allocations: 6750)
+
+
+Started DELETE "/session" for 127.0.0.1 at 2021-01-07 20:54:23 -0500
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"iZSe2yJHwGqga3/sSDmf8sQc50dZskMFsh4Qlbj531O2XO2yHtKhGlZqUH0/zU2t9KXbQINEEr41zsucOcUNXg=="}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "eF17EGAoE8Wd9qThIrkxlg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:23:in `reset_session_token!'
+  [1m[36mUser Exists? (1.3ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "brian456@gmail.com"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23:in `reset_session_token!'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "6LM55qHD4K2B47vEnVMY-A"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23:in `reset_session_token!'
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "6LM55qHD4K2B47vEnVMY-A"], ["updated_at", "2021-01-08 01:54:23.859062"], ["id", 2]]
+  ↳ app/models/user.rb:23:in `reset_session_token!'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:23:in `reset_session_token!'
+Redirected to http://localhost:3000/session/new
+Completed 302 Found in 14ms (ActiveRecord: 4.4ms | Allocations: 5447)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2021-01-07 20:54:23 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.8ms | Allocations: 176)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 12ms (Views: 11.1ms | ActiveRecord: 0.0ms | Allocations: 5716)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2021-01-07 20:54:24 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 57)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 14ms (Views: 12.7ms | ActiveRecord: 0.0ms | Allocations: 5046)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2021-01-07 20:54:27 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.5ms | Allocations: 57)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 14ms (Views: 12.8ms | ActiveRecord: 0.0ms | Allocations: 5043)
+
+
+Started POST "/session" for 127.0.0.1 at 2021-01-07 20:54:33 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"ZubgLVoc/by/pJi8LE/ivOf5p9PczfwZ0NC78saX0FZZLpNEZomczEmlty1buzDj10Cb1AY7raJXAGD7R6sCWw==", "user"=>{"email"=>"brian456@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "brian456@gmail.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:16:in `find_by_credentials'
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:23:in `reset_session_token!'
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "brian456@gmail.com"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23:in `reset_session_token!'
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "eEPmQt2B-YWtNG4iizRisw"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23:in `reset_session_token!'
+  [1m[36mUser Update (0.8ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "eEPmQt2B-YWtNG4iizRisw"], ["updated_at", "2021-01-08 01:54:34.153070"], ["id", 2]]
+  ↳ app/models/user.rb:23:in `reset_session_token!'
+  [1m[35m (0.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:23:in `reset_session_token!'
+Redirected to http://localhost:3000/users/2
+Completed 302 Found in 311ms (ActiveRecord: 4.4ms | Allocations: 5564)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2021-01-07 20:54:34 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:22:in `show'
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 0.0ms | Allocations: 8)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "eEPmQt2B-YWtNG4iizRisw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+Completed 200 OK in 6ms (Views: 4.3ms | ActiveRecord: 0.9ms | Allocations: 6227)
+
+
+Started DELETE "/session" for 127.0.0.1 at 2021-01-07 20:54:35 -0500
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"UGTlIMbP5hLkrJ3VopfImcWVvUkCb6v4bxV992cUDB1vrJZJ+lqHYhKtskTVYxrG9SyBTtiZ+kPoxab+5ijeEA=="}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "eEPmQt2B-YWtNG4iizRisw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:23:in `reset_session_token!'
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "brian456@gmail.com"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23:in `reset_session_token!'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "zHEwIC9ImpoL8o9LRyq8Xg"], ["id", 2], ["LIMIT", 1]]
+  ↳ app/models/user.rb:23:in `reset_session_token!'
+  [1m[36mUser Update (1.1ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "zHEwIC9ImpoL8o9LRyq8Xg"], ["updated_at", "2021-01-08 01:54:35.615195"], ["id", 2]]
+  ↳ app/models/user.rb:23:in `reset_session_token!'
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:23:in `reset_session_token!'
+Redirected to http://localhost:3000/session/new
+Completed 302 Found in 20ms (ActiveRecord: 3.9ms | Allocations: 5381)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2021-01-07 20:54:35 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.5ms | Allocations: 57)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 12ms (Views: 11.3ms | ActiveRecord: 0.0ms | Allocations: 5047)
+
+
