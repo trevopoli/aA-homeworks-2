@@ -404,3 +404,1071 @@ Migrating to CreateGoals (20210108174414)
   [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
   [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_advisory_unlock(533990673584014395)[0m
   [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/goals/new" for 127.0.0.1 at 2021-01-08 21:03:41 -0500
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by GoalsController#new as HTML
+  Rendering goals/new.html.erb within layouts/application
+  Rendered goals/new.html.erb within layouts/application (Duration: 0.6ms | Allocations: 186)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 41ms (Views: 10.3ms | ActiveRecord: 20.0ms | Allocations: 12058)
+
+
+Started GET "/goals/new" for 127.0.0.1 at 2021-01-08 21:04:44 -0500
+Processing by GoalsController#new as HTML
+  Rendering goals/new.html.erb within layouts/application
+  Rendered goals/new.html.erb within layouts/application (Duration: 4.2ms | Allocations: 180)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 36ms (Views: 34.8ms | ActiveRecord: 0.0ms | Allocations: 6233)
+
+
+Started GET "/goals/new" for 127.0.0.1 at 2021-01-08 21:06:53 -0500
+Processing by GoalsController#new as HTML
+  Rendering goals/new.html.erb within layouts/application
+  Rendered goals/new.html.erb within layouts/application (Duration: 1.6ms | Allocations: 188)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 20ms (Views: 18.5ms | ActiveRecord: 0.0ms | Allocations: 6241)
+
+
+Started GET "/goals/new" for 127.0.0.1 at 2021-01-08 21:07:28 -0500
+Processing by GoalsController#new as HTML
+  Rendering goals/new.html.erb within layouts/application
+  Rendered goals/new.html.erb within layouts/application (Duration: 1.1ms | Allocations: 185)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 17ms (Views: 16.3ms | ActiveRecord: 0.0ms | Allocations: 6232)
+
+
+Started POST "/goals" for 127.0.0.1 at 2021-01-08 21:07:56 -0500
+Processing by GoalsController#create as HTML
+  Parameters: {"authenticity_token"=>"YZ/zwcXAspqjGBjd3+ZaSP6QeD7cb383Zs9iI0r4PpNeV4Co+VXT6lUZN0yoEogXzilEOQaZLozhH7kqy8Tsng==", "goal"=>{"title"=>"Work Out", "completion_date"=>"2021-01-29", "description"=>"Work out more", "private"=>"false"}}
+  Rendering goals/new.html.erb within layouts/application
+  Rendered goals/new.html.erb within layouts/application (Duration: 0.3ms | Allocations: 55)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 37ms (Views: 7.5ms | ActiveRecord: 0.0ms | Allocations: 14039)
+
+
+  [1m[36mGoal Load (1.9ms)[0m  [1m[34mSELECT "goals".* FROM "goals"[0m
+Started POST "/goals" for 127.0.0.1 at 2021-01-08 21:10:47 -0500
+Processing by GoalsController#create as HTML
+  Parameters: {"authenticity_token"=>"7gljHde/gJancXoUtkzkgI9mVS1k2MGUO8tF8p/7uHbRwRB06yrh5lFwVYXBuDbfv99pKr4ukC+8G577Hsdqew==", "goal"=>{"title"=>"Work Out", "completion_date"=>"2021-01-29", "description"=>"Work out more", "private"=>"false"}}
+  Rendering goals/new.html.erb within layouts/application
+  Rendered goals/new.html.erb within layouts/application (Duration: 0.2ms | Allocations: 60)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 39ms (Views: 5.3ms | ActiveRecord: 17.7ms | Allocations: 15365)
+
+
+  [1m[36mGoal Load (1.4ms)[0m  [1m[34mSELECT "goals".* FROM "goals"[0m
+Started GET "/session/new" for 127.0.0.1 at 2021-01-08 21:12:38 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.7ms | Allocations: 182)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 8ms (Views: 7.0ms | ActiveRecord: 0.0ms | Allocations: 6184)
+
+
+Started POST "/session" for 127.0.0.1 at 2021-01-08 21:12:43 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"zCI4TSMN7byvH8VuD0VfISvmSPBgpLfcV5l9xoJsPUbz6kskH5iMzFke6v94sY1+G19097pS5mfQSabPA1DvSw==", "user"=>{"email"=>"brian890@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "brian890@gmail.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:18:in `find_by_credentials'
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:25:in `reset_session_token!'
+  [1m[36mUser Exists? (1.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "brian890@gmail.com"], ["id", 3], ["LIMIT", 1]]
+  ↳ app/models/user.rb:25:in `reset_session_token!'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "lsxFoLXLSTEJ2scZuTz_DA"], ["id", 3], ["LIMIT", 1]]
+  ↳ app/models/user.rb:25:in `reset_session_token!'
+  [1m[36mUser Update (1.2ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "lsxFoLXLSTEJ2scZuTz_DA"], ["updated_at", "2021-01-09 02:12:43.951143"], ["id", 3]]
+  ↳ app/models/user.rb:25:in `reset_session_token!'
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:25:in `reset_session_token!'
+Redirected to http://localhost:3000/users/3
+Completed 302 Found in 341ms (ActiveRecord: 20.1ms | Allocations: 10047)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2021-01-08 21:12:43 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:22:in `show'
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 0.4ms | Allocations: 100)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lsxFoLXLSTEJ2scZuTz_DA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+Completed 200 OK in 8ms (Views: 5.6ms | ActiveRecord: 0.9ms | Allocations: 7064)
+
+
+Started GET "/goals/new" for 127.0.0.1 at 2021-01-08 21:12:50 -0500
+Processing by GoalsController#new as HTML
+  Rendering goals/new.html.erb within layouts/application
+  Rendered goals/new.html.erb within layouts/application (Duration: 0.6ms | Allocations: 186)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lsxFoLXLSTEJ2scZuTz_DA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+Completed 200 OK in 39ms (Views: 9.2ms | ActiveRecord: 11.5ms | Allocations: 11342)
+
+
+Started POST "/goals" for 127.0.0.1 at 2021-01-08 21:13:01 -0500
+Processing by GoalsController#create as HTML
+  Parameters: {"authenticity_token"=>"Iy3ESL+V8B9Q48uXG++cn5wgq1CqkTtsVFV8wPm89SYc5bchgwCRb6bi5AZsG07ArJmXV3BnatfThafJeIAnKw==", "goal"=>{"title"=>"Work Out", "completion_date"=>"2021-01-29", "description"=>"Work out more", "private"=>"false"}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lsxFoLXLSTEJ2scZuTz_DA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/goals_controller.rb:14:in `create'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/goals_controller.rb:14:in `create'
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/goals_controller.rb:14:in `create'
+  Rendering goals/new.html.erb within layouts/application
+  Rendered goals/new.html.erb within layouts/application (Duration: 0.3ms | Allocations: 53)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 35ms (Views: 9.6ms | ActiveRecord: 2.3ms | Allocations: 12489)
+
+
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  [1m[36mUser Load (2.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+Started POST "/goals" for 127.0.0.1 at 2021-01-08 21:17:37 -0500
+Processing by GoalsController#create as HTML
+  Parameters: {"authenticity_token"=>"1bwVhIyvN8c1L1feQV8NBcQTPJyXdBSM378e6DKL33/qdGbtsDpWt8MueE82q99a9KoAm02CRTdYb8Xhs7cNcg==", "goal"=>{"title"=>"Work Out", "completion_date"=>"2021-01-29", "description"=>"Work out more", "private"=>"false"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lsxFoLXLSTEJ2scZuTz_DA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/goals_controller.rb:14:in `create'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/goals_controller.rb:14:in `create'
+  [1m[36mGoal Create (1.9ms)[0m  [1m[32mINSERT INTO "goals" ("title", "description", "user_id", "completion_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Work Out"], ["description", "Work out more"], ["user_id", 3], ["completion_date", "2021-01-29"], ["created_at", "2021-01-09 02:17:37.333037"], ["updated_at", "2021-01-09 02:17:37.333037"]]
+  ↳ app/controllers/goals_controller.rb:14:in `create'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/goals_controller.rb:14:in `create'
+Redirected to http://localhost:3000/users/3
+Completed 302 Found in 60ms (ActiveRecord: 27.1ms | Allocations: 15547)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2021-01-08 21:17:37 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:22:in `show'
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 0.0ms | Allocations: 8)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lsxFoLXLSTEJ2scZuTz_DA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+Completed 200 OK in 16ms (Views: 12.8ms | ActiveRecord: 1.6ms | Allocations: 6464)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2021-01-08 21:20:05 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:22:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mGoal Load (0.8ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1[0m  [["user_id", 3]]
+  ↳ app/views/users/show.html.erb:6
+  Rendered users/show.html.erb within layouts/application (Duration: 34.5ms | Allocations: 9548)
+Completed 500 Internal Server Error in 43ms (ActiveRecord: 1.4ms | Allocations: 11305)
+
+
+
+NoMethodError - undefined method `false?' for false:FalseClass:
+  app/views/users/show.html.erb:7
+  app/views/users/show.html.erb:6
+  app/controllers/users_controller.rb:23:in `show'
+
+Started POST "/__better_errors/3502e7b186e01238/variables" for 127.0.0.1 at 2021-01-08 21:20:05 -0500
+Started GET "/users/3" for 127.0.0.1 at 2021-01-08 21:20:42 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:22:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mGoal Load (0.7ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1[0m  [["user_id", 3]]
+  ↳ app/views/users/show.html.erb:6
+  Rendered users/show.html.erb within layouts/application (Duration: 3.9ms | Allocations: 1000)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lsxFoLXLSTEJ2scZuTz_DA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+Completed 200 OK in 32ms (Views: 27.1ms | ActiveRecord: 2.1ms | Allocations: 8248)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2021-01-08 21:21:59 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:22:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mGoal Load (0.8ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1[0m  [["user_id", 3]]
+  ↳ app/views/users/show.html.erb:6
+  Rendered users/show.html.erb within layouts/application (Duration: 5.0ms | Allocations: 1015)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lsxFoLXLSTEJ2scZuTz_DA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+Completed 200 OK in 29ms (Views: 23.7ms | ActiveRecord: 1.9ms | Allocations: 8246)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2021-01-08 21:22:17 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:22:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mGoal Load (0.7ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1[0m  [["user_id", 3]]
+  ↳ app/views/users/show.html.erb:6
+  Rendered users/show.html.erb within layouts/application (Duration: 7.0ms | Allocations: 1012)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lsxFoLXLSTEJ2scZuTz_DA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+Completed 200 OK in 42ms (Views: 37.0ms | ActiveRecord: 1.7ms | Allocations: 8263)
+
+
+Started GET "/users" for 127.0.0.1 at 2021-01-08 21:29:54 -0500
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (2.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 20]]
+  ↳ app/views/users/index.html.erb:4
+  Rendered users/index.html.erb within layouts/application (Duration: 12.6ms | Allocations: 5235)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lsxFoLXLSTEJ2scZuTz_DA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+Completed 200 OK in 23ms (Views: 19.0ms | ActiveRecord: 3.3ms | Allocations: 11953)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2021-01-08 21:29:57 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:22:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mGoal Load (1.3ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1[0m  [["user_id", 3]]
+  ↳ app/views/users/show.html.erb:6
+  Rendered users/show.html.erb within layouts/application (Duration: 27.3ms | Allocations: 8882)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lsxFoLXLSTEJ2scZuTz_DA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+Completed 200 OK in 45ms (Views: 37.4ms | ActiveRecord: 2.7ms | Allocations: 15244)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2021-01-08 21:33:04 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:22:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mGoal Load (0.8ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1[0m  [["user_id", 3]]
+  ↳ app/views/users/show.html.erb:6
+  Rendered users/show.html.erb within layouts/application (Duration: 9.1ms | Allocations: 1072)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lsxFoLXLSTEJ2scZuTz_DA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+Completed 200 OK in 43ms (Views: 36.5ms | ActiveRecord: 2.4ms | Allocations: 8300)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2021-01-08 21:33:10 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:22:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mGoal Load (0.8ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1[0m  [["user_id", 3]]
+  ↳ app/views/users/show.html.erb:6
+  Rendered users/show.html.erb within layouts/application (Duration: 16.1ms | Allocations: 1065)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lsxFoLXLSTEJ2scZuTz_DA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+Completed 200 OK in 42ms (Views: 31.2ms | ActiveRecord: 2.2ms | Allocations: 8306)
+
+
+Started GET "/goals/1" for 127.0.0.1 at 2021-01-08 21:33:12 -0500
+Processing by GoalsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mGoal Load (0.6ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/goals_controller.rb:23:in `show'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lsxFoLXLSTEJ2scZuTz_DA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendering goals/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/goals/show.html.erb:9
+  Rendered goals/show.html.erb within layouts/application (Duration: 3.3ms | Allocations: 1128)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 18ms (Views: 12.5ms | ActiveRecord: 1.3ms | Allocations: 7943)
+
+
+Started GET "/goals/1" for 127.0.0.1 at 2021-01-08 21:33:53 -0500
+Processing by GoalsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mGoal Load (0.6ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/goals_controller.rb:23:in `show'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lsxFoLXLSTEJ2scZuTz_DA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendering goals/show.html.erb within layouts/application
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/goals/show.html.erb:9
+  Rendered goals/show.html.erb within layouts/application (Duration: 6.8ms | Allocations: 975)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 29ms (Views: 22.7ms | ActiveRecord: 2.0ms | Allocations: 8190)
+
+
+Started GET "/goals/1" for 127.0.0.1 at 2021-01-08 21:38:01 -0500
+Processing by GoalsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mGoal Load (0.9ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/goals_controller.rb:23:in `show'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lsxFoLXLSTEJ2scZuTz_DA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendering goals/show.html.erb within layouts/application
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/goals/show.html.erb:9
+  Rendered goals/show.html.erb within layouts/application (Duration: 5.4ms | Allocations: 1043)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 30ms (Views: 21.5ms | ActiveRecord: 2.5ms | Allocations: 8258)
+
+
+Started GET "/goals/1" for 127.0.0.1 at 2021-01-08 21:38:12 -0500
+Processing by GoalsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mGoal Load (0.6ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/goals_controller.rb:23:in `show'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lsxFoLXLSTEJ2scZuTz_DA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendering goals/show.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/goals/show.html.erb:9
+  Rendered goals/show.html.erb within layouts/application (Duration: 5.3ms | Allocations: 1141)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 26ms (Views: 20.4ms | ActiveRecord: 1.6ms | Allocations: 8319)
+
+
+Started DELETE "/goals/1" for 127.0.0.1 at 2021-01-08 21:38:17 -0500
+Processing by GoalsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"budOvFOIhlVfcfu+fVwacS/pAzyBnWCVeTJK1XcFZq5RLz3Vbx3nJalw1C8KqMguH1A/O1trMS7+4pHc9jm0ow==", "id"=>"1"}
+No template found for GoalsController#destroy, rendering head :no_content
+Completed 204 No Content in 8ms (ActiveRecord: 0.0ms | Allocations: 1658)
+
+
+Started GET "/goals/1" for 127.0.0.1 at 2021-01-08 21:41:03 -0500
+Processing by GoalsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mGoal Load (0.5ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/goals_controller.rb:23:in `show'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lsxFoLXLSTEJ2scZuTz_DA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendering goals/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/goals/show.html.erb:9
+  Rendered goals/show.html.erb within layouts/application (Duration: 3.4ms | Allocations: 2640)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 58ms (Views: 10.3ms | ActiveRecord: 30.2ms | Allocations: 19213)
+
+
+Started GET "/goals/1" for 127.0.0.1 at 2021-01-08 21:41:50 -0500
+Processing by GoalsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mGoal Load (0.6ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/goals_controller.rb:23:in `show'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lsxFoLXLSTEJ2scZuTz_DA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendering goals/show.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/goals/show.html.erb:9
+  Rendered goals/show.html.erb within layouts/application (Duration: 4.1ms | Allocations: 1180)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 38ms (Views: 33.6ms | ActiveRecord: 1.3ms | Allocations: 8378)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2021-01-08 21:41:52 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:22:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lsxFoLXLSTEJ2scZuTz_DA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mGoal Load (0.5ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1[0m  [["user_id", 3]]
+  ↳ app/views/users/show.html.erb:11
+  Rendered users/show.html.erb within layouts/application (Duration: 6.4ms | Allocations: 3262)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 20ms (Views: 16.2ms | ActiveRecord: 1.3ms | Allocations: 9432)
+
+
+Started GET "/goals/1" for 127.0.0.1 at 2021-01-08 21:42:00 -0500
+Processing by GoalsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mGoal Load (0.4ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/goals_controller.rb:23:in `show'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lsxFoLXLSTEJ2scZuTz_DA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendering goals/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/goals/show.html.erb:9
+  Rendered goals/show.html.erb within layouts/application (Duration: 3.1ms | Allocations: 930)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 19ms (Views: 13.6ms | ActiveRecord: 1.1ms | Allocations: 7104)
+
+
+Started GET "/goals/new" for 127.0.0.1 at 2021-01-08 21:42:05 -0500
+Processing by GoalsController#new as HTML
+  Rendering goals/new.html.erb within layouts/application
+  Rendered goals/new.html.erb within layouts/application (Duration: 1.2ms | Allocations: 188)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lsxFoLXLSTEJ2scZuTz_DA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+Completed 200 OK in 16ms (Views: 14.2ms | ActiveRecord: 0.5ms | Allocations: 5948)
+
+
+Started GET "/goals/1" for 127.0.0.1 at 2021-01-08 21:46:07 -0500
+Processing by GoalsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mGoal Load (0.2ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/goals_controller.rb:23:in `show'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lsxFoLXLSTEJ2scZuTz_DA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendering goals/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/goals/show.html.erb:9
+  Rendered goals/show.html.erb within layouts/application (Duration: 2.8ms | Allocations: 2430)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 56ms (Views: 9.1ms | ActiveRecord: 27.1ms | Allocations: 18184)
+
+
+Started DELETE "/goals/1" for 127.0.0.1 at 2021-01-08 21:46:08 -0500
+Processing by GoalsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"fcUfd5yA9t0g9e5XEnLFj9JG9yzifsXGsgH4sS97w8FCDWweoBWXrdb0wcZlhhfQ4v/LKziIlH010SO4rkcRzA==", "id"=>"1"}
+  [1m[36mGoal Load (0.4ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/goals_controller.rb:40:in `destroy'
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/goals_controller.rb:42:in `destroy'
+  [1m[36mGoal Destroy (0.9ms)[0m  [1m[31mDELETE FROM "goals" WHERE "goals"."id" = $1[0m  [["id", 1]]
+  ↳ app/controllers/goals_controller.rb:42:in `destroy'
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/goals_controller.rb:42:in `destroy'
+Redirected to http://localhost:3000/users/3
+Completed 302 Found in 12ms (ActiveRecord: 2.6ms | Allocations: 2806)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2021-01-08 21:46:08 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:22:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lsxFoLXLSTEJ2scZuTz_DA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mGoal Load (0.9ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1[0m  [["user_id", 3]]
+  ↳ app/views/users/show.html.erb:11
+  Rendered users/show.html.erb within layouts/application (Duration: 9.1ms | Allocations: 2924)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 29ms (Views: 21.7ms | ActiveRecord: 2.3ms | Allocations: 8678)
+
+
+Started GET "/goals/new" for 127.0.0.1 at 2021-01-08 21:46:10 -0500
+Processing by GoalsController#new as HTML
+  Rendering goals/new.html.erb within layouts/application
+  Rendered goals/new.html.erb within layouts/application (Duration: 0.5ms | Allocations: 58)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lsxFoLXLSTEJ2scZuTz_DA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+Completed 200 OK in 16ms (Views: 14.2ms | ActiveRecord: 0.5ms | Allocations: 5698)
+
+
+Started POST "/goals" for 127.0.0.1 at 2021-01-08 21:46:21 -0500
+Processing by GoalsController#create as HTML
+  Parameters: {"authenticity_token"=>"mUKvxQPR8635A2AViaCkXiGb9pi6/fZq3L9S5/zTAaqmitysP0SS3Q8CT4T+VHYBESLKn2ALp9Fbb4nufe/Tpw==", "goal"=>{"title"=>"Walk Around More", "completion_date"=>"2021-01-29", "description"=>"2 walks per day", "private"=>"false"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lsxFoLXLSTEJ2scZuTz_DA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/goals_controller.rb:14:in `create'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/goals_controller.rb:14:in `create'
+  [1m[36mGoal Create (1.9ms)[0m  [1m[32mINSERT INTO "goals" ("title", "description", "user_id", "completion_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Walk Around More"], ["description", "2 walks per day"], ["user_id", 3], ["completion_date", "2021-01-29"], ["created_at", "2021-01-09 02:46:21.830446"], ["updated_at", "2021-01-09 02:46:21.830446"]]
+  ↳ app/controllers/goals_controller.rb:14:in `create'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/goals_controller.rb:14:in `create'
+Redirected to http://localhost:3000/users/3
+Completed 302 Found in 17ms (ActiveRecord: 3.5ms | Allocations: 4711)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2021-01-08 21:46:21 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:22:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lsxFoLXLSTEJ2scZuTz_DA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mGoal Load (0.8ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1[0m  [["user_id", 3]]
+  ↳ app/views/users/show.html.erb:11
+  Rendered users/show.html.erb within layouts/application (Duration: 5.6ms | Allocations: 1493)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 20ms (Views: 15.6ms | ActiveRecord: 1.5ms | Allocations: 7080)
+
+
+Started GET "/goals/new" for 127.0.0.1 at 2021-01-08 21:46:23 -0500
+Processing by GoalsController#new as HTML
+  Rendering goals/new.html.erb within layouts/application
+  Rendered goals/new.html.erb within layouts/application (Duration: 0.6ms | Allocations: 57)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lsxFoLXLSTEJ2scZuTz_DA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+Completed 200 OK in 17ms (Views: 15.0ms | ActiveRecord: 0.8ms | Allocations: 5690)
+
+
+Started POST "/goals" for 127.0.0.1 at 2021-01-08 21:46:37 -0500
+Processing by GoalsController#create as HTML
+  Parameters: {"authenticity_token"=>"SSKEiWDjuO1rSuVJiQAUr3ycm8RW2dpnMJ1ALwCC+BN26vfgXHbZnZ1Lytj+9MbwTCWnw4wvi9y3TZsmgb4qHg==", "goal"=>{"title"=>"Play soccer", "completion_date"=>"2021-01-21", "description"=>"Play soccer once a week at the field", "private"=>"false"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lsxFoLXLSTEJ2scZuTz_DA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/goals_controller.rb:14:in `create'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/goals_controller.rb:14:in `create'
+  [1m[36mGoal Create (1.2ms)[0m  [1m[32mINSERT INTO "goals" ("title", "description", "user_id", "completion_date", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Play soccer"], ["description", "Play soccer once a week at the field"], ["user_id", 3], ["completion_date", "2021-01-21"], ["created_at", "2021-01-09 02:46:37.599598"], ["updated_at", "2021-01-09 02:46:37.599598"]]
+  ↳ app/controllers/goals_controller.rb:14:in `create'
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/goals_controller.rb:14:in `create'
+Redirected to http://localhost:3000/users/3
+Completed 302 Found in 16ms (ActiveRecord: 2.8ms | Allocations: 4636)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2021-01-08 21:46:37 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:22:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lsxFoLXLSTEJ2scZuTz_DA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mGoal Load (0.4ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1[0m  [["user_id", 3]]
+  ↳ app/views/users/show.html.erb:11
+  Rendered users/show.html.erb within layouts/application (Duration: 5.5ms | Allocations: 1558)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 22ms (Views: 17.5ms | ActiveRecord: 1.6ms | Allocations: 7150)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2021-01-08 21:47:23 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:22:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lsxFoLXLSTEJ2scZuTz_DA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mGoal Load (0.4ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1[0m  [["user_id", 3]]
+  ↳ app/views/users/show.html.erb:11
+  Rendered users/show.html.erb within layouts/application (Duration: 8.1ms | Allocations: 1815)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 24ms (Views: 20.2ms | ActiveRecord: 1.4ms | Allocations: 8434)
+
+
+Started GET "/goals/3" for 127.0.0.1 at 2021-01-08 21:47:26 -0500
+Processing by GoalsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mGoal Load (0.6ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/goals_controller.rb:23:in `show'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lsxFoLXLSTEJ2scZuTz_DA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendering goals/show.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/goals/show.html.erb:9
+  Rendered goals/show.html.erb within layouts/application (Duration: 5.2ms | Allocations: 1177)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 26ms (Views: 19.5ms | ActiveRecord: 1.6ms | Allocations: 7888)
+
+
+Started GET "/goals/3/edit" for 127.0.0.1 at 2021-01-08 21:47:29 -0500
+
+AbstractController::ActionNotFound - The action 'edit' could not be found for GoalsController:
+
+Started POST "/__better_errors/ca15c4b53c392320/variables" for 127.0.0.1 at 2021-01-08 21:47:29 -0500
+Started GET "/goals/3" for 127.0.0.1 at 2021-01-08 21:47:32 -0500
+Processing by GoalsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mGoal Load (0.8ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/goals_controller.rb:23:in `show'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lsxFoLXLSTEJ2scZuTz_DA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendering goals/show.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/goals/show.html.erb:9
+  Rendered goals/show.html.erb within layouts/application (Duration: 3.1ms | Allocations: 923)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 24ms (Views: 14.2ms | ActiveRecord: 1.9ms | Allocations: 7080)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2021-01-08 21:47:35 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:22:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lsxFoLXLSTEJ2scZuTz_DA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mGoal Load (0.4ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1[0m  [["user_id", 3]]
+  ↳ app/views/users/show.html.erb:11
+  Rendered users/show.html.erb within layouts/application (Duration: 5.5ms | Allocations: 1557)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 21ms (Views: 16.1ms | ActiveRecord: 1.6ms | Allocations: 7135)
+
+
+Started GET "/goals/2" for 127.0.0.1 at 2021-01-08 21:47:38 -0500
+Processing by GoalsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mGoal Load (0.5ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/goals_controller.rb:23:in `show'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lsxFoLXLSTEJ2scZuTz_DA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  Rendering goals/show.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/goals/show.html.erb:9
+  Rendered goals/show.html.erb within layouts/application (Duration: 3.6ms | Allocations: 922)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 23ms (Views: 15.9ms | ActiveRecord: 1.5ms | Allocations: 7080)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2021-01-08 21:47:39 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:22:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lsxFoLXLSTEJ2scZuTz_DA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mGoal Load (0.5ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1[0m  [["user_id", 3]]
+  ↳ app/views/users/show.html.erb:11
+  Rendered users/show.html.erb within layouts/application (Duration: 6.4ms | Allocations: 1550)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 26ms (Views: 20.6ms | ActiveRecord: 1.6ms | Allocations: 7125)
+
+
+Started DELETE "/session" for 127.0.0.1 at 2021-01-08 21:47:43 -0500
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"Ucy45c+//HX/QytCwDvuTcPbjN+w+CS5JYW1N5M+R/9uBMuM8yqdBQlCBNO3zzwS82Kw2GoOdQKiVW4+EgKV8g=="}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "lsxFoLXLSTEJ2scZuTz_DA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "brian890@gmail.com"], ["id", 3], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "h3gN4iorhGuwLHLVRsAaJg"], ["id", 3], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mUser Update (0.7ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "h3gN4iorhGuwLHLVRsAaJg"], ["updated_at", "2021-01-09 02:47:43.293628"], ["id", 3]]
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+Redirected to http://localhost:3000/session/new
+Completed 302 Found in 12ms (ActiveRecord: 2.9ms | Allocations: 5627)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2021-01-08 21:47:43 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.1ms | Allocations: 176)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 10ms (Views: 9.9ms | ActiveRecord: 0.0ms | Allocations: 5736)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2021-01-08 21:49:01 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.4ms | Allocations: 177)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 7ms (Views: 6.8ms | ActiveRecord: 0.0ms | Allocations: 6229)
+
+
+Started GET "/users" for 127.0.0.1 at 2021-01-08 21:49:04 -0500
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 20]]
+  ↳ app/views/users/index.html.erb:4
+  Rendered users/index.html.erb within layouts/application (Duration: 28.2ms | Allocations: 5300)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 40ms (Views: 25.8ms | ActiveRecord: 12.4ms | Allocations: 10846)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2021-01-08 21:49:06 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:22:in `show'
+  Rendering users/show.html.erb within layouts/application
+  Rendered users/show.html.erb within layouts/application (Duration: 4.5ms | Allocations: 2794)
+Completed 500 Internal Server Error in 11ms (ActiveRecord: 0.5ms | Allocations: 4054)
+
+
+
+NoMethodError - undefined method `id' for nil:NilClass:
+  app/views/users/show.html.erb:5
+  app/controllers/users_controller.rb:23:in `show'
+
+Started POST "/__better_errors/dd5b352cb066999b/variables" for 127.0.0.1 at 2021-01-08 21:49:06 -0500
+Started GET "/users" for 127.0.0.1 at 2021-01-08 21:49:18 -0500
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 20]]
+  ↳ app/views/users/index.html.erb:4
+  Rendered users/index.html.erb within layouts/application (Duration: 3.9ms | Allocations: 884)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 14ms (Views: 12.6ms | ActiveRecord: 0.7ms | Allocations: 5952)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2021-01-08 21:49:32 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.5ms | Allocations: 63)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 13ms (Views: 12.0ms | ActiveRecord: 0.0ms | Allocations: 5094)
+
+
+Started GET "/users" for 127.0.0.1 at 2021-01-08 21:52:12 -0500
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 20]]
+  ↳ app/views/users/index.html.erb:4
+  Rendered users/index.html.erb within layouts/application (Duration: 19.1ms | Allocations: 5167)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 25ms (Views: 12.6ms | ActiveRecord: 11.7ms | Allocations: 10402)
+
+
+Started GET "/users/2" for 127.0.0.1 at 2021-01-08 21:52:13 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+Redirected to http://localhost:3000/session/new
+Filter chain halted as :require_user! rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms | Allocations: 344)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2021-01-08 21:52:13 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.5ms | Allocations: 64)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 14ms (Views: 13.3ms | ActiveRecord: 0.0ms | Allocations: 5224)
+
+
+Started GET "/users" for 127.0.0.1 at 2021-01-08 21:52:14 -0500
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 20]]
+  ↳ app/views/users/index.html.erb:4
+  Rendered users/index.html.erb within layouts/application (Duration: 5.1ms | Allocations: 880)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 21ms (Views: 19.3ms | ActiveRecord: 0.7ms | Allocations: 5927)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2021-01-08 21:52:15 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://localhost:3000/session/new
+Filter chain halted as :require_user! rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms | Allocations: 329)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2021-01-08 21:52:15 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.4ms | Allocations: 57)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 14ms (Views: 13.0ms | ActiveRecord: 0.0ms | Allocations: 5102)
+
+
+Started POST "/session" for 127.0.0.1 at 2021-01-08 21:52:21 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"L2GqOYiX5KPOzM3o5IuCSPtdyT7VKRjqOUFSGXYk0kEQqdlQtAKF0zjN4nmTf1AXy+T1OQ/fSVG+kYkQ9xgATA==", "user"=>{"email"=>"brian123@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "brian123@gmail.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:19:in `find_by_credentials'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mUser Exists? (0.7ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "brian123@gmail.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mUser Exists? (0.6ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "0jyBaptGXuAmPIw6UhCSyA"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mUser Update (0.9ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "0jyBaptGXuAmPIw6UhCSyA"], ["updated_at", "2021-01-09 02:52:21.644450"], ["id", 1]]
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+Redirected to http://localhost:3000/users/1
+Completed 302 Found in 309ms (ActiveRecord: 3.7ms | Allocations: 5767)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2021-01-08 21:52:21 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "0jyBaptGXuAmPIw6UhCSyA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:22:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mGoal Load (0.2ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:11
+  Rendered users/show.html.erb within layouts/application (Duration: 6.5ms | Allocations: 3276)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 13ms (Views: 7.2ms | ActiveRecord: 4.1ms | Allocations: 9626)
+
+
+Started GET "/users" for 127.0.0.1 at 2021-01-08 21:52:23 -0500
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 20]]
+  ↳ app/views/users/index.html.erb:4
+  Rendered users/index.html.erb within layouts/application (Duration: 5.6ms | Allocations: 881)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "0jyBaptGXuAmPIw6UhCSyA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+Completed 200 OK in 24ms (Views: 20.7ms | ActiveRecord: 1.5ms | Allocations: 6536)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2021-01-08 21:52:24 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "0jyBaptGXuAmPIw6UhCSyA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:22:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mGoal Load (0.4ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1[0m  [["user_id", 3]]
+  ↳ app/views/users/show.html.erb:11
+  Rendered users/show.html.erb within layouts/application (Duration: 31.8ms | Allocations: 6534)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 54ms (Views: 39.0ms | ActiveRecord: 9.6ms | Allocations: 12653)
+
+
+Started GET "/goals/2" for 127.0.0.1 at 2021-01-08 21:52:25 -0500
+Processing by GoalsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "0jyBaptGXuAmPIw6UhCSyA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mGoal Load (0.5ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/goals_controller.rb:24:in `show'
+Completed 500 Internal Server Error in 20ms (ActiveRecord: 1.0ms | Allocations: 4681)
+
+
+
+NoMethodError - undefined method `private!' for #<Goal:0x00007f963ba70750>
+Did you mean?  private
+               private=
+               private?:
+  app/controllers/goals_controller.rb:27:in `show'
+
+Started POST "/__better_errors/50a8f8df172d699a/variables" for 127.0.0.1 at 2021-01-08 21:52:25 -0500
+Started GET "/goals/2" for 127.0.0.1 at 2021-01-08 21:52:57 -0500
+Processing by GoalsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "0jyBaptGXuAmPIw6UhCSyA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mGoal Load (0.2ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/goals_controller.rb:24:in `show'
+  Rendering goals/show.html.erb within layouts/application
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/goals/show.html.erb:9
+  Rendered goals/show.html.erb within layouts/application (Duration: 2.4ms | Allocations: 2597)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 43ms (Views: 7.3ms | ActiveRecord: 21.2ms | Allocations: 18815)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2021-01-08 21:53:02 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "0jyBaptGXuAmPIw6UhCSyA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:22:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mGoal Load (0.5ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1[0m  [["user_id", 3]]
+  ↳ app/views/users/show.html.erb:11
+  Rendered users/show.html.erb within layouts/application (Duration: 5.5ms | Allocations: 2399)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 25ms (Views: 17.8ms | ActiveRecord: 1.5ms | Allocations: 8849)
+
+
+Started GET "/users" for 127.0.0.1 at 2021-01-08 21:53:06 -0500
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 20]]
+  ↳ app/views/users/index.html.erb:4
+  Rendered users/index.html.erb within layouts/application (Duration: 3.2ms | Allocations: 905)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "0jyBaptGXuAmPIw6UhCSyA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+Completed 200 OK in 20ms (Views: 18.3ms | ActiveRecord: 1.0ms | Allocations: 6585)
+
+
+Started GET "/users/1" for 127.0.0.1 at 2021-01-08 21:53:07 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "0jyBaptGXuAmPIw6UhCSyA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:22:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mGoal Load (0.4ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1[0m  [["user_id", 1]]
+  ↳ app/views/users/show.html.erb:11
+  Rendered users/show.html.erb within layouts/application (Duration: 3.5ms | Allocations: 820)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 23ms (Views: 17.6ms | ActiveRecord: 1.1ms | Allocations: 7051)
+
+
+Started GET "/users" for 127.0.0.1 at 2021-01-08 21:53:13 -0500
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 20]]
+  ↳ app/views/users/index.html.erb:4
+  Rendered users/index.html.erb within layouts/application (Duration: 4.4ms | Allocations: 880)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "0jyBaptGXuAmPIw6UhCSyA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+Completed 200 OK in 20ms (Views: 17.3ms | ActiveRecord: 1.0ms | Allocations: 6554)
+
+
+Started DELETE "/session" for 127.0.0.1 at 2021-01-08 21:53:18 -0500
+Processing by SessionsController#destroy as HTML
+  Parameters: {"authenticity_token"=>"D22ExGRTLFVYo3L9A1j1HF9+F9Z47Q7BH74F8tMRjX8wpfetWMZNJa6iXWx0rCdDb8cr0aIbX3qYbt77Ui1fcg=="}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "0jyBaptGXuAmPIw6UhCSyA"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mUser Exists? (0.9ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "brian123@gmail.com"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mUser Exists? (0.5ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "g6wzEylRHrzUkfkMur8dwA"], ["id", 1], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mUser Update (1.0ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "g6wzEylRHrzUkfkMur8dwA"], ["updated_at", "2021-01-09 02:53:18.405337"], ["id", 1]]
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+Redirected to http://localhost:3000/session/new
+Completed 302 Found in 20ms (ActiveRecord: 3.9ms | Allocations: 5629)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2021-01-08 21:53:18 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.5ms | Allocations: 63)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 13ms (Views: 12.1ms | ActiveRecord: 0.0ms | Allocations: 5250)
+
+
+Started GET "/users" for 127.0.0.1 at 2021-01-08 21:53:20 -0500
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 20]]
+  ↳ app/views/users/index.html.erb:4
+  Rendered users/index.html.erb within layouts/application (Duration: 4.2ms | Allocations: 881)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 17ms (Views: 15.3ms | ActiveRecord: 0.6ms | Allocations: 5936)
+
+
+Started GET "/users/new" for 127.0.0.1 at 2021-01-08 21:53:23 -0500
+Processing by UsersController#new as HTML
+  Rendering users/new.html.erb within layouts/application
+  Rendered users/new.html.erb within layouts/application (Duration: 1.1ms | Allocations: 177)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 17ms (Views: 15.8ms | ActiveRecord: 0.0ms | Allocations: 5374)
+
+
+Started GET "/users" for 127.0.0.1 at 2021-01-08 21:53:25 -0500
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 20]]
+  ↳ app/views/users/index.html.erb:4
+  Rendered users/index.html.erb within layouts/application (Duration: 3.6ms | Allocations: 881)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 16ms (Views: 15.0ms | ActiveRecord: 0.4ms | Allocations: 5928)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2021-01-08 21:54:21 -0500
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered sessions/new.html.erb within layouts/application (Duration: 0.5ms | Allocations: 63)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 12ms (Views: 11.2ms | ActiveRecord: 0.0ms | Allocations: 5095)
+
+
+Started POST "/session" for 127.0.0.1 at 2021-01-08 21:54:25 -0500
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"ihmOY0HqkhdVc5npfabB6IEheS0bEysY7bMcr22gbtK10f0KfX/zZ6NytngKUhO3sZhFKsHleqNqY8em7Jy83w==", "user"=>{"email"=>"brian890@gmail.com", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."email" = $1 LIMIT $2[0m  [["email", "brian890@gmail.com"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:19:in `find_by_credentials'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."email" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["email", "brian890@gmail.com"], ["id", 3], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mUser Exists? (0.4ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "W002EWHzoKYEJhWhexrGMg"], ["id", 3], ["LIMIT", 1]]
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[36mUser Update (0.5ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "W002EWHzoKYEJhWhexrGMg"], ["updated_at", "2021-01-09 02:54:25.962003"], ["id", 3]]
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:26:in `reset_session_token!'
+Redirected to http://localhost:3000/users/3
+Completed 302 Found in 307ms (ActiveRecord: 3.4ms | Allocations: 5608)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2021-01-08 21:54:25 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "W002EWHzoKYEJhWhexrGMg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:22:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mGoal Load (0.2ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1[0m  [["user_id", 3]]
+  ↳ app/views/users/show.html.erb:11
+  Rendered users/show.html.erb within layouts/application (Duration: 1.1ms | Allocations: 943)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 7ms (Views: 4.7ms | ActiveRecord: 1.0ms | Allocations: 7157)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2021-01-08 21:55:04 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "W002EWHzoKYEJhWhexrGMg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:22:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mGoal Load (0.5ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1[0m  [["user_id", 3]]
+  ↳ app/views/users/show.html.erb:11
+  Rendered users/show.html.erb within layouts/application (Duration: 5.7ms | Allocations: 1200)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 30ms (Views: 23.1ms | ActiveRecord: 1.5ms | Allocations: 8528)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2021-01-08 21:55:06 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "W002EWHzoKYEJhWhexrGMg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:22:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mGoal Load (0.4ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1[0m  [["user_id", 3]]
+  ↳ app/views/users/show.html.erb:11
+  Rendered users/show.html.erb within layouts/application (Duration: 3.3ms | Allocations: 942)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 32ms (Views: 13.9ms | ActiveRecord: 1.4ms | Allocations: 7222)
+
+
+Started GET "/users" for 127.0.0.1 at 2021-01-08 21:55:08 -0500
+Processing by UsersController#index as HTML
+  Rendering users/index.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" ORDER BY "users"."id" DESC LIMIT $1[0m  [["LIMIT", 20]]
+  ↳ app/views/users/index.html.erb:4
+  Rendered users/index.html.erb within layouts/application (Duration: 4.5ms | Allocations: 1032)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "W002EWHzoKYEJhWhexrGMg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+Completed 200 OK in 23ms (Views: 20.6ms | ActiveRecord: 1.1ms | Allocations: 6871)
+
+
+Started GET "/users/3" for 127.0.0.1 at 2021-01-08 21:55:09 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "W002EWHzoKYEJhWhexrGMg"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:7:in `current_user'
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/users_controller.rb:22:in `show'
+  Rendering users/show.html.erb within layouts/application
+  [1m[36mGoal Load (0.4ms)[0m  [1m[34mSELECT "goals".* FROM "goals" WHERE "goals"."user_id" = $1[0m  [["user_id", 3]]
+  ↳ app/views/users/show.html.erb:11
+  Rendered users/show.html.erb within layouts/application (Duration: 3.4ms | Allocations: 942)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 22ms (Views: 14.8ms | ActiveRecord: 1.2ms | Allocations: 7191)
+
+

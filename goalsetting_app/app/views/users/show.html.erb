@@ -1,1 +1,17 @@
 <h1><%= @user.email %>'s Profile</h1>
+
+<h3><%= @user.email %>'s goals</h3>
+
+<% if @user.id == current_user.id %>
+    <%= link_to 'Add A New Goal', new_goal_url %>
+<% end %>
+<br>
+
+<ul>
+    <% @user.goals.each do |goal| %>
+        <% unless goal.private %>
+            <li><a href="<%= goal_url(goal.id) %>"><%= goal.title %></a> by <%= goal.completion_date %></li>
+        <% end %>
+    <% end %>
+</ul>
+

@@ -11,8 +11,10 @@
 
   <body>
     <nav>
+      <div><%= link_to 'Go Home', users_url %></div>
       <% if logged_in? %>
         Welcome, <%= current_user.email %>.
+        <%= link_to 'My Profile', user_url(current_user.id) %>
         <form action="<%= session_url %>" method="post">
           <%= auth_token %>
           <input type="hidden" name="_method" value="delete">

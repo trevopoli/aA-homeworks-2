@@ -1,0 +1,7 @@
+<h1>All Users</h1>
+
+<ul>
+    <% User.last(20).each do |user|%>
+        <li><a href="<%= user_url(user.id) %>"><%= user.email %>'s Profile</a></li>
+    <% end %>
+<ul>

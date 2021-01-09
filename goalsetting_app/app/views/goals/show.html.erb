@@ -1,0 +1,19 @@
+<h1><%= @goal.title %></h1>
+<h2>
+    <% if @goal.completed %>
+        completed by
+    <% else %>
+        in progress by
+    <% end %>
+
+    <a href="<%= user_url(@goal.user_id) %>"><%= @goal.user.email %></a>
+</h2>
+<h2>Target Completion of <%= @goal.completion_date %></h2>
+
+<h3>Description: </h3>
+<p> <%= @goal.description %></p>
+
+<% if current_user.id == @goal.user_id %>
+    <%= link_to "Edit Goal", edit_goal_url(@goal.id) %>
+    <%= link_to 'Delete Goal', goal_url(@goal.id), method: :delete %>
+<% end %>
