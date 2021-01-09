@@ -11,6 +11,12 @@ class User < ApplicationRecord
     has_many :goals,
         dependent: :destroy
 
+    has_many :comments, as: :commentable
+
+    has_many :authored_comments,
+        foreign_key: :author_id,
+        class_name: "Comment"
+
     def self.generate_session_token
         SecureRandom.urlsafe_base64(16)
     end
