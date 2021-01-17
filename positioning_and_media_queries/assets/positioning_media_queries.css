@@ -80,7 +80,7 @@ nav ul li a {
 
 body {
   margin: 0 auto;
-    width: 60%;
+  width: 60%;
 }
 
 aside {
@@ -109,8 +109,59 @@ label {
     display: block;
 }
 
-/* Media Queries! */
-@media all and (max-width: 900px) {
-/* Code Goes Here */
+.hamburger-dropdown {
+  display: none
 }
+
+@media only screen and (max-width: 900px) {
+
+  [class*="col-"] {
+    width: 100%;
+  }
+
+  body {
+    margin: 0 auto;
+    width: 75%;
+  }
+
+  nav > ul {
+    display: none;
+  }
+
+  .hamburger-dropdown {
+    display: block;
+  }
+
+  .hamburger-dropdown > li {
+    background: url(./hamburger.png);
+    background-repeat: no-repeat;
+    background-size: 50px 50px;
+    width: 50px;
+    height: 50px;
+
+    position: relative;
+    cursor: pointer;
+  }
+
+  .hamburger-dropdown ul {
+    display: none;
+    position: absolute;
+    top: 50px;
+    right: 0px;
+    flex-direction: column;
+    background-color: ghostwhite;
+    cursor: pointer;
+  }
+
+  .hamburger-dropdown:hover ul {
+    display: flex;
+  }
+
+  .hamburger-dropdown ul li:hover {
+    background: black;
+    color: ghostwhite;
+  }
+
+}
+
 
