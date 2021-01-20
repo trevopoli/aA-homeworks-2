@@ -1,0 +1,36 @@
+.sections-nav {
+    padding: 10px;
+    border-bottom: 1px solid $light-gray;
+}
+
+.sections-nav-links {
+    display: flex;
+    justify-content: center;
+
+    button {
+		background: none;
+		padding: 0px;
+		color: #000;
+		font-weight: normal;
+        border: none;
+        text-transform: none;
+	}
+
+	button:hover {
+		background-color: $lightest-gray;
+    }
+
+	a:hover {
+		text-decoration: underline;
+    }
+    
+    a {
+        text-transform: uppercase;
+        font-family: $sans-serif;
+    }
+
+	a,
+	button {
+        margin-right: 10px;
+	}
+}
