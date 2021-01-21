@@ -1,0 +1,65 @@
+html, head, body, header,
+nav, h1, a, ul, li, main,
+section, p, footer, small {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  vertical-align: inherit;
+  box-sizing: inherit;
+  background: transparent;
+}
+
+header, nav, main, section,
+footer, small {
+  display: block;
+}
+
+ul {
+  list-style: none;
+}
+
+body {
+    width: 60%;
+    margin: auto;
+}
+.page-header {
+    display: flex;
+    background: blue;
+    justify-content: center;
+    font-family: sans-serif;
+    font-size: 32px;
+    padding: 20px;
+    margin: auto;
+}
+
+.post-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.post-item {
+    margin: 2% 8%;
+    border: 3px solid lightgrey;
+}
+
+.post-header {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    border-bottom: 1px solid lightgray;
+}
+
+.post-profile-pic {
+    margin: 20px;
+}
+
+.post-author {
+    
+}
+
