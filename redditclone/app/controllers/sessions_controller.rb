@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
             render :new
         else
             login_user!(user)
-            #redirect_to home
+            redirect_to subs_url
         end
     end
 
