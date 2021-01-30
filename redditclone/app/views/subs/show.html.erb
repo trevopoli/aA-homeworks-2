@@ -3,7 +3,7 @@
 
 <% if current_user.id == @sub.moderator_id %>
     <form action="<%= sub_url(@sub.id) %>" method="post">
-        <% auth_token %>
+        <%= auth_token %>
         <input type="hidden" name="_method" value="delete">
         <input type="submit" value="Delete sub">
     </form>
