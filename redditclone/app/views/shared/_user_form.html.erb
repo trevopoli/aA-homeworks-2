@@ -1,0 +1,22 @@
+<% form_action = (current_page?(new_user_url) ? users_url : session_url) %>
+<% submit_value = (current_page?(new_user_url) ? "Create User" : "Login") %>
+
+<% if flash[:errors] %>
+        <ul class="user-form-errors">
+            <% flash[:errors].each do |error| %>
+                <li><%= error %></li>
+            <% end %>
+        </ul>
+<% end %>
+
+<form action="<%= form_action %>" method="post">
+    <%= auth_token %>
+
+    <label for="username">Username: </label>
+    <input type="text" name="user[username]" id="username">
+
+    <label for="password">Password: </label>
+    <input type="text" name="user[password]" id="password">
+
+    <input type="submit" value="<%= submit_value %>">
+</form>
