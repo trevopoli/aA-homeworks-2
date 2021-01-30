@@ -1,0 +1,31 @@
+<h1>Add a Post</h1>
+
+<% if flash[:errors] %>
+        <ul class="post-form-errors">
+            <% flash[:errors].each do |error| %>
+                <li><%= error %></li>
+            <% end %>
+        </ul>
+<% end %>
+
+<form action="<%= posts_url %>" method="post">
+    <%= auth_token %>
+
+    <label for="post-form-title">Title: </label>
+    <input type="text" name="post[title]" id="post-form-title">
+
+    <label for="post-form-url">Link url: </label>
+    <input type="text" name="post[url]" id="post-form-url">
+
+    <label for="post-form-content">Content: </label>
+    <textarea name="post[content]" id="post-form-content"></textarea>
+
+    <br>
+    <% Sub.all.each do |sub| %>
+        <label for="<%= sub.title %>"><%= sub.title %></label>
+        <input type="radio" id="<%= sub.title %>" name="post[sub_id]" value="<%= sub.id %>"><br>
+    <% end %>
+
+    <br>
+    <input type="submit" value="Create Post">
+</form>

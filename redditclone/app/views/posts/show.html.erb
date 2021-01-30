@@ -1,0 +1,10 @@
+<h1><%= @post.title %></h1>
+<h2>in <%= @post.sub.title %></h2>
+
+
+<% if @post.url %>
+# <h3><a href="<%= @post.url %>">Link</a></h3>
+<% end %>
+
+
+<p><%= @post.content %></p>

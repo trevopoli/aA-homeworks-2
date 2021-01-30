@@ -7,4 +7,6 @@ Rails.application.routes.draw do
 
   resources :subs
 
+  resources :posts, only: [:new, :create, :edit, :update, :show, :destroy]
+
 end

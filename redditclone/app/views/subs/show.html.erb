@@ -8,3 +8,13 @@
         <input type="submit" value="Delete sub">
     </form>
 <% end %>
+
+<h3>Posts</h3>
+
+<%= link_to 'Add a post', new_post_url %>
+
+<ul>
+    <% @sub.posts.each do |post| %>
+        <li><%= link_to post.title, post_url(post.id) %></li>
+    <% end %>
+</ul>
