@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 
   private
   def require_no_user!
-    
+    redirect_to subs_url if current_user
   end
 
   def current_user

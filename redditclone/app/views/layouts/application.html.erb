@@ -10,6 +10,8 @@
   </head>
 
   <body>
+    <header>
+    <%= link_to 'HOME', subs_url %>
     <div class="user-header">
       <% if current_user %>
           Logged in as <%= current_user.username %>.
@@ -23,6 +25,7 @@
         <%= link_to 'Sign Up', new_user_url %>
       <% end %>
     </div>
+    </header>
 
     <%= yield %>
 

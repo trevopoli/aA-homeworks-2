@@ -1,0 +1,21 @@
+
+
+<% if flash[:errors] %>
+        <ul class="sub-form-errors">
+            <% flash[:errors].each do |error| %>
+                <li><%= error %></li>
+            <% end %>
+        </ul>
+<% end %>
+
+<form action="<%= subs_url %>" method="post">
+    <%= auth_token %>
+
+    <label for="sub-form-title">Sub Title: </label>
+    <input type="text" id="sub-form-title" name="sub[title]">
+
+    <label for="sub-form-description">Sub Description: </label>
+    <textarea id="sub-form-description" name="sub[description]"></textarea>
+
+    <input type="submit" value="Create Sub">
+</form>
