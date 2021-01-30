@@ -1,5 +1,6 @@
 class SubsController < ApplicationController
     before_action :require_user!, only: [:new, :create, :destroy, :edit, :update]
+    before_action :require_moderator!, only: [:edit, :update, :destroy]
 
     def index
         render :index
@@ -29,7 +30,7 @@ class SubsController < ApplicationController
     end
 
     def edit
-        @sub
+        
     end
 
     def update
@@ -45,6 +46,10 @@ class SubsController < ApplicationController
     private
     def sub_params
         params.require(:sub).permit([:title, :description])
+    end
+
+    def require_moderator!
+        # check current user to sub moderator_id
     end
 
 end
