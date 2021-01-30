@@ -42,7 +42,7 @@ class PostsController < ApplicationController
 
     private
     def post_params
-        params.require(:post).permit([:title, :content, :url, :sub_id])
+        params.require(:post).permit([:title, :content, :url, sub_ids:[]])
     end
 
     def self.is_current_user_author?(post)

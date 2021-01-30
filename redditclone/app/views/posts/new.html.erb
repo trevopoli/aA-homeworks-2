@@ -20,10 +20,12 @@
     <label for="post-form-content">Content: </label>
     <textarea name="post[content]" id="post-form-content"></textarea>
 
+    <input type="hidden" name="post[sub_ids][]" value="">
+    
     <br>
     <% Sub.all.each do |sub| %>
         <label for="<%= sub.title %>"><%= sub.title %></label>
-        <input type="radio" id="<%= sub.title %>" name="post[sub_id]" value="<%= sub.id %>"><br>
+        <input type="checkbox" id="<%= sub.title %>" name="post[sub_ids][]" value="<%= sub.id %>"><br>
     <% end %>
 
     <br>
