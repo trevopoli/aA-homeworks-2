@@ -15,4 +15,13 @@ class Post < ApplicationRecord
         self.comments.where(parent_comment_id: nil)
     end
 
+    def comments_by_parent_id
+        comments = self.comments.includes(:author)
+        all_comments = Hash.new {|key, value| key[value] = []}
+        comments.each do |comment|
+            all_comments[comment.parent_comment_id] << comment
+        end
+        all_comments
+    end
+
 end

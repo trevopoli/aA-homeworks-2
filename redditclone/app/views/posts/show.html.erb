@@ -17,10 +17,10 @@
 <%= link_to 'Add a comment', new_post_comment_url(@post.id) %>
 
 <ul>
-  <% @post.top_level_comments.each do |comment| %>
+  <% @all_comments[nil].each do |comment| %>
     <li><%= comment.content %><br><em>by <%= comment.author.username %></em>
         <%= link_to 'see more', comment_url(comment.id) %>
-        <%= render 'shared/comments', comment: comment%>
+        <%= render 'shared/comments', all_comments: @all_comments, next_comment_parent_id: comment.id%>
     </li>
   <% end %>
 </ul>

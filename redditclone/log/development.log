@@ -3002,3 +3002,31 @@ Processing by CommentsController#show as HTML
 Completed 200 OK in 26ms (Views: 21.2ms | ActiveRecord: 2.3ms | Allocations: 7801)
 
 
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 3]]
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1[0m  [["id", 4]]
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mComment Load (1.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 3]]
+  [1m[36mUser Load (1.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1[0m  [["id", 4]]
+Started GET "/posts/3" for 127.0.0.1 at 2021-01-31 16:45:25 -0700
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:35:in `show'
+  [1m[36mComment Load (1.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 3]]
+  ↳ app/models/post.rb:21:in `comments_by_parent_id'
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1[0m  [["id", 4]]
+  ↳ app/models/post.rb:21:in `comments_by_parent_id'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mSub Load (2.9ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 3]]
+  ↳ app/views/posts/show.html.erb:2
+  Rendered shared/_comments.html.erb (Duration: 0.0ms | Allocations: 7)
+  Rendered shared/_comments.html.erb (Duration: 0.4ms | Allocations: 303)
+  Rendered shared/_comments.html.erb (Duration: 0.0ms | Allocations: 6)
+  Rendered posts/show.html.erb within layouts/application (Duration: 14.3ms | Allocations: 12478)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "MElOeyn-1GKpkc3QBrQK2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+Completed 200 OK in 54ms (Views: 20.9ms | ActiveRecord: 7.1ms | Allocations: 39942)
+
+
