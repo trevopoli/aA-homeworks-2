@@ -15,6 +15,8 @@ class User < ApplicationRecord
 
     has_many :posts, inverse_of: :author
 
+    has_many :comments, inverse_of: :author
+
     def self.find_by_credentials(username, password)
         user = User.find_by(username: username)
 

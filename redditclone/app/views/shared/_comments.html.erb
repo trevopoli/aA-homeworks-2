@@ -1,0 +1,8 @@
+<ul>
+    <% comment.child_comments.each do |comment| %>
+        <li><%= comment.content %><br><em>by <%= comment.author.username %></em>
+        <%= link_to 'see more', comment_url(comment.id) %>
+        <%= render 'shared/comments', comment: comment%>
+        </li>
+    <% end %>
+</ul>

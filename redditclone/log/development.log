@@ -1980,3 +1980,1025 @@ Completed 200 OK in 47ms (Views: 43.1ms | ActiveRecord: 1.4ms | Allocations: 641
   [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
   [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
   [1m[36mPostSub Load (1.3ms)[0m  [1m[34mSELECT "post_subs".* FROM "post_subs" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 3]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8218155208135281360)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateComments (20210130200857)
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (7.1ms)[0m  [1m[35mCREATE TABLE "comments" ("id" bigserial primary key, "author_id" integer NOT NULL, "post_id" integer NOT NULL, "content" text NOT NULL, "parent_comment_id" integer, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_author_id" ON "comments"  ("author_id")[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_post_id" ON "comments"  ("post_id")[0m
+  [1m[35m (0.6ms)[0m  [1m[35mCREATE  INDEX  "index_comments_on_parent_comment_id" ON "comments"  ("parent_comment_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210130200857"]]
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.7ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT pg_advisory_unlock(8218155208135281360)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/subs" for 127.0.0.1 at 2021-01-30 15:11:36 -0700
+  [1m[35m (0.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by SubsController#index as HTML
+  Rendering subs/index.html.erb within layouts/application
+  [1m[36mSub Load (0.9ms)[0m  [1m[34mSELECT "subs".* FROM "subs"[0m
+  ↳ app/views/subs/index.html.erb:6
+  Rendered subs/index.html.erb within layouts/application (Duration: 9.9ms | Allocations: 5362)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (1.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "vrm6K9YOhr38Lho6g7GdUw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+Completed 200 OK in 29ms (Views: 25.3ms | ActiveRecord: 2.8ms | Allocations: 16152)
+
+
+Started GET "/subs/3" for 127.0.0.1 at 2021-01-30 15:11:37 -0700
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mSub Load (0.9ms)[0m  [1m[34mSELECT "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:28:in `show'
+  Rendering subs/show.html.erb within layouts/application
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "vrm6K9YOhr38Lho6g7GdUw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mPost Load (4.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" INNER JOIN "post_subs" ON "posts"."id" = "post_subs"."post_id" WHERE "post_subs"."sub_id" = $1[0m  [["sub_id", 3]]
+  ↳ app/views/subs/show.html.erb:17
+  Rendered subs/show.html.erb within layouts/application (Duration: 37.5ms | Allocations: 13086)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 52ms (Views: 41.2ms | ActiveRecord: 5.6ms | Allocations: 18684)
+
+
+Started GET "/subs/3" for 127.0.0.1 at 2021-01-30 15:11:38 -0700
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mSub Load (0.8ms)[0m  [1m[34mSELECT "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:28:in `show'
+  Rendering subs/show.html.erb within layouts/application
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "vrm6K9YOhr38Lho6g7GdUw"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mPost Load (1.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" INNER JOIN "post_subs" ON "posts"."id" = "post_subs"."post_id" WHERE "post_subs"."sub_id" = $1[0m  [["sub_id", 3]]
+  ↳ app/views/subs/show.html.erb:17
+  Rendered subs/show.html.erb within layouts/application (Duration: 9.6ms | Allocations: 1718)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 28ms (Views: 21.0ms | ActiveRecord: 3.1ms | Allocations: 7314)
+
+
+Started GET "/subs" for 127.0.0.1 at 2021-01-30 15:12:32 -0700
+Processing by SubsController#index as HTML
+  Rendering subs/index.html.erb within layouts/application
+  [1m[36mSub Load (1.2ms)[0m  [1m[34mSELECT "subs".* FROM "subs"[0m
+  ↳ app/views/subs/index.html.erb:6
+  Rendered subs/index.html.erb within layouts/application (Duration: 4.3ms | Allocations: 779)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 29ms (Views: 27.1ms | ActiveRecord: 1.2ms | Allocations: 5720)
+
+
+Started GET "/subs/1" for 127.0.0.1 at 2021-01-30 15:28:44 -0700
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSub Load (1.1ms)[0m  [1m[34mSELECT "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:28:in `show'
+  Rendering subs/show.html.erb within layouts/application
+  Rendered subs/show.html.erb within layouts/application (Duration: 1.7ms | Allocations: 2733)
+Completed 500 Internal Server Error in 14ms (ActiveRecord: 1.3ms | Allocations: 9271)
+
+
+
+NoMethodError - undefined method `id' for nil:NilClass:
+  app/views/subs/show.html.erb:4
+  app/controllers/subs_controller.rb:29:in `show'
+
+Started POST "/__better_errors/f6a2e27283ac4c2b/variables" for 127.0.0.1 at 2021-01-30 15:28:44 -0700
+Started GET "/subs" for 127.0.0.1 at 2021-01-30 15:28:54 -0700
+Processing by SubsController#index as HTML
+  Rendering subs/index.html.erb within layouts/application
+  [1m[36mSub Load (0.7ms)[0m  [1m[34mSELECT "subs".* FROM "subs"[0m
+  ↳ app/views/subs/index.html.erb:6
+  Rendered subs/index.html.erb within layouts/application (Duration: 4.6ms | Allocations: 935)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 26ms (Views: 24.1ms | ActiveRecord: 0.7ms | Allocations: 6453)
+
+
+Started GET "/subs/1" for 127.0.0.1 at 2021-01-30 15:29:38 -0700
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mSub Load (0.7ms)[0m  [1m[34mSELECT "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:28:in `show'
+  Rendering subs/show.html.erb within layouts/application
+  [1m[36mPost Load (2.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" INNER JOIN "post_subs" ON "posts"."id" = "post_subs"."post_id" WHERE "post_subs"."sub_id" = $1[0m  [["sub_id", 1]]
+  ↳ app/views/subs/show.html.erb:17
+  Rendered subs/show.html.erb within layouts/application (Duration: 39.2ms | Allocations: 15357)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 55ms (Views: 47.9ms | ActiveRecord: 3.2ms | Allocations: 21920)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2021-01-30 15:29:40 -0700
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:35:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mSub Load (1.2ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 3]]
+  ↳ app/views/posts/show.html.erb:2
+  Rendered posts/show.html.erb within layouts/application (Duration: 112.0ms | Allocations: 82247)
+Completed 500 Internal Server Error in 120ms (ActiveRecord: 1.9ms | Allocations: 83954)
+
+
+
+NoMethodError - undefined method `new_post_comment' for #<#<Class:0x00007fb131ae1ea8>:0x00007fb131ad9758>
+Did you mean?  new_post_comment_url:
+  app/views/posts/show.html.erb:17
+  app/controllers/posts_controller.rb:36:in `show'
+
+Started POST "/__better_errors/a54f07f1d84f11f5/variables" for 127.0.0.1 at 2021-01-30 15:29:40 -0700
+Started GET "/posts/3" for 127.0.0.1 at 2021-01-30 15:29:53 -0700
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (1.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:35:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mSub Load (2.4ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 3]]
+  ↳ app/views/posts/show.html.erb:2
+  [1m[36mComment Load (3.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 3]]
+  ↳ app/views/posts/show.html.erb:20
+  Rendered posts/show.html.erb within layouts/application (Duration: 32.9ms | Allocations: 4672)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 54ms (Views: 32.7ms | ActiveRecord: 16.2ms | Allocations: 11244)
+
+
+Started GET "/posts/3/comments/new" for 127.0.0.1 at 2021-01-30 15:29:55 -0700
+
+SyntaxError - syntax error, unexpected end-of-input, expecting `end':
+  app/controllers/comments_controller.rb:22:in `'
+
+Started POST "/__better_errors/c165449b1fc61099/variables" for 127.0.0.1 at 2021-01-30 15:29:55 -0700
+Started GET "/posts/3/comments/new" for 127.0.0.1 at 2021-01-30 15:31:35 -0700
+Processing by CommentsController#new as HTML
+  Parameters: {"post_id"=>"3"}
+Redirected to http://localhost:3000/session/new
+Filter chain halted as :require_user! rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms | Allocations: 374)
+
+
+Started GET "/session/new" for 127.0.0.1 at 2021-01-30 15:31:35 -0700
+Processing by SessionsController#new as HTML
+  Rendering sessions/new.html.erb within layouts/application
+  Rendered shared/_user_form.html.erb (Duration: 0.6ms | Allocations: 391)
+  Rendered sessions/new.html.erb within layouts/application (Duration: 1.3ms | Allocations: 682)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 6ms (Views: 6.0ms | ActiveRecord: 0.0ms | Allocations: 6303)
+
+
+Started POST "/session" for 127.0.0.1 at 2021-01-30 15:31:41 -0700
+Processing by SessionsController#create as HTML
+  Parameters: {"authenticity_token"=>"3nI3hE+69pcGCKfV5/Z51n9jhtvmJSgnahCOVwMulatPfHMp9UsRdwRJVrtSRVErHCmX3MVoHETrw+gyzdWh/w==", "user"=>{"username"=>"targetlover", "password"=>"[FILTERED]"}}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."username" = $1 LIMIT $2[0m  [["username", "targetlover"], ["LIMIT", 1]]
+  ↳ app/models/user.rb:21:in `find_by_credentials'
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/models/user.rb:38:in `reset_session_token!'
+  [1m[36mUser Exists? (1.0ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."username" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["username", "targetlover"], ["id", 4], ["LIMIT", 1]]
+  ↳ app/models/user.rb:38:in `reset_session_token!'
+  [1m[36mUser Exists? (0.8ms)[0m  [1m[34mSELECT 1 AS one FROM "users" WHERE "users"."session_token" = $1 AND "users"."id" != $2 LIMIT $3[0m  [["session_token", "MElOeyn-1GKpkc3QBrQK2A"], ["id", 4], ["LIMIT", 1]]
+  ↳ app/models/user.rb:38:in `reset_session_token!'
+  [1m[36mUser Update (1.1ms)[0m  [1m[33mUPDATE "users" SET "session_token" = $1, "updated_at" = $2 WHERE "users"."id" = $3[0m  [["session_token", "MElOeyn-1GKpkc3QBrQK2A"], ["updated_at", "2021-01-30 22:31:41.650879"], ["id", 4]]
+  ↳ app/models/user.rb:38:in `reset_session_token!'
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/models/user.rb:38:in `reset_session_token!'
+Redirected to http://localhost:3000/subs
+Completed 302 Found in 325ms (ActiveRecord: 24.2ms | Allocations: 10963)
+
+
+Started GET "/subs" for 127.0.0.1 at 2021-01-30 15:31:41 -0700
+Processing by SubsController#index as HTML
+  Rendering subs/index.html.erb within layouts/application
+  [1m[36mSub Load (0.7ms)[0m  [1m[34mSELECT "subs".* FROM "subs"[0m
+  ↳ app/views/subs/index.html.erb:6
+  Rendered subs/index.html.erb within layouts/application (Duration: 24.2ms | Allocations: 5375)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "MElOeyn-1GKpkc3QBrQK2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+Completed 200 OK in 33ms (Views: 19.2ms | ActiveRecord: 13.0ms | Allocations: 11694)
+
+
+Started GET "/subs/3" for 127.0.0.1 at 2021-01-30 15:31:43 -0700
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mSub Load (1.2ms)[0m  [1m[34mSELECT "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:28:in `show'
+  Rendering subs/show.html.erb within layouts/application
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "MElOeyn-1GKpkc3QBrQK2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" INNER JOIN "post_subs" ON "posts"."id" = "post_subs"."post_id" WHERE "post_subs"."sub_id" = $1[0m  [["sub_id", 3]]
+  ↳ app/views/subs/show.html.erb:17
+  Rendered subs/show.html.erb within layouts/application (Duration: 46.9ms | Allocations: 13651)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 61ms (Views: 39.2ms | ActiveRecord: 17.4ms | Allocations: 19396)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2021-01-30 15:31:44 -0700
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (1.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:35:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mSub Load (1.4ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 3]]
+  ↳ app/views/posts/show.html.erb:2
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 3]]
+  ↳ app/views/posts/show.html.erb:20
+  Rendered posts/show.html.erb within layouts/application (Duration: 19.1ms | Allocations: 7076)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "MElOeyn-1GKpkc3QBrQK2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+Completed 200 OK in 38ms (Views: 25.5ms | ActiveRecord: 7.7ms | Allocations: 13490)
+
+
+Started GET "/posts/3/comments/new" for 127.0.0.1 at 2021-01-30 15:31:45 -0700
+Processing by CommentsController#new as HTML
+  Parameters: {"post_id"=>"3"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "MElOeyn-1GKpkc3QBrQK2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  Rendering comments/new.html.erb within layouts/application
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/comments/new.html.erb:1
+  Rendered comments/new.html.erb within layouts/application (Duration: 5.1ms | Allocations: 2369)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 42ms (Views: 15.6ms | ActiveRecord: 10.5ms | Allocations: 11709)
+
+
+Started GET "/posts/3/comments/new" for 127.0.0.1 at 2021-01-30 15:34:52 -0700
+Processing by CommentsController#new as HTML
+  Parameters: {"post_id"=>"3"}
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "MElOeyn-1GKpkc3QBrQK2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  Rendering comments/new.html.erb within layouts/application
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/comments/new.html.erb:1
+  Rendered comments/new.html.erb within layouts/application (Duration: 19.9ms | Allocations: 7740)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 67ms (Views: 14.6ms | ActiveRecord: 37.7ms | Allocations: 23681)
+
+
+Started POST "/comments" for 127.0.0.1 at 2021-01-30 15:55:01 -0700
+Processing by CommentsController#create as HTML
+  Parameters: {"authenticity_token"=>"TAihvd6fnic8AeCseFoNQmuYWdy/iNXqok/CBVJSiWzdBuUQZG55xz5AEcLN6SW/CNJI25zF4YkjnKRgnKm9OA==", "comment"=>{"content"=>"commenting here!"}}
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "MElOeyn-1GKpkc3QBrQK2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 3.0ms | Allocations: 5110)
+
+
+
+NoMethodError - undefined method `body' for #<Comment:0x00007fb1631f37b0>:
+  app/controllers/comments_controller.rb:14:in `create'
+
+Started POST "/__better_errors/ff6000868cd4980e/variables" for 127.0.0.1 at 2021-01-30 15:55:01 -0700
+Started POST "/comments" for 127.0.0.1 at 2021-01-30 15:55:36 -0700
+Processing by CommentsController#create as HTML
+  Parameters: {"authenticity_token"=>"TAihvd6fnic8AeCseFoNQmuYWdy/iNXqok/CBVJSiWzdBuUQZG55xz5AEcLN6SW/CNJI25zF4YkjnKRgnKm9OA==", "comment"=>{"content"=>"commenting here!"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "MElOeyn-1GKpkc3QBrQK2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+Completed 500 Internal Server Error in 52ms (ActiveRecord: 32.6ms | Allocations: 19746)
+
+
+
+ActionController::UrlGenerationError - No route matches {:action=>"new", :controller=>"comments", :post_id=>nil}, missing required keys: [:post_id]:
+  app/controllers/comments_controller.rb:18:in `create'
+
+Started POST "/__better_errors/ecbeb566674ffdbd/variables" for 127.0.0.1 at 2021-01-30 15:55:36 -0700
+Started POST "/comments" for 127.0.0.1 at 2021-01-30 15:57:12 -0700
+Processing by CommentsController#create as HTML
+  Parameters: {"authenticity_token"=>"TAihvd6fnic8AeCseFoNQmuYWdy/iNXqok/CBVJSiWzdBuUQZG55xz5AEcLN6SW/CNJI25zF4YkjnKRgnKm9OA==", "comment"=>{"content"=>"commenting here!"}}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "MElOeyn-1GKpkc3QBrQK2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[35m (0.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+Completed 500 Internal Server Error in 19ms (ActiveRecord: 1.9ms | Allocations: 5704)
+
+
+
+ActionController::UrlGenerationError - No route matches {:action=>"new", :controller=>"comments", :post_id=>nil}, missing required keys: [:post_id]:
+  app/controllers/comments_controller.rb:18:in `create'
+
+Started POST "/__better_errors/bd32282ab8bd6e36/variables" for 127.0.0.1 at 2021-01-30 15:57:12 -0700
+Started POST "/comments" for 127.0.0.1 at 2021-01-30 16:03:43 -0700
+Processing by CommentsController#create as HTML
+  Parameters: {"authenticity_token"=>"TAihvd6fnic8AeCseFoNQmuYWdy/iNXqok/CBVJSiWzdBuUQZG55xz5AEcLN6SW/CNJI25zF4YkjnKRgnKm9OA==", "comment"=>{"content"=>"commenting here!"}}
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "MElOeyn-1GKpkc3QBrQK2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[35m (1.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+  [1m[35m (0.4ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+Completed 500 Internal Server Error in 27ms (ActiveRecord: 5.5ms | Allocations: 5807)
+
+
+
+ActionController::UrlGenerationError - No route matches {:action=>"new", :controller=>"comments", :post_id=>nil}, missing required keys: [:post_id]:
+  app/controllers/comments_controller.rb:18:in `create'
+
+Started POST "/__better_errors/cc2a3a6ab7d728c3/variables" for 127.0.0.1 at 2021-01-30 16:03:43 -0700
+Started GET "/posts/3/comments/new" for 127.0.0.1 at 2021-01-30 16:07:29 -0700
+Processing by CommentsController#new as HTML
+  Parameters: {"post_id"=>"3"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "MElOeyn-1GKpkc3QBrQK2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  Rendering comments/new.html.erb within layouts/application
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/comments/new.html.erb:1
+  Rendered comments/new.html.erb within layouts/application (Duration: 41.2ms | Allocations: 4852)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 61ms (Views: 37.1ms | ActiveRecord: 20.3ms | Allocations: 11564)
+
+
+Started POST "/comments" for 127.0.0.1 at 2021-01-30 16:07:34 -0700
+Processing by CommentsController#create as HTML
+  Parameters: {"authenticity_token"=>"if62QfWqvQa/r3OfNtD5Yhm1L+Mbm86bwlnjRMrssSwY8PLsT1ta5r3ugvGDY9Gfev8+5DjW+vhDioUhBBeFeA==", "comment"=>{"post_id"=>"3", "content"=>"commenting here!"}}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "MElOeyn-1GKpkc3QBrQK2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+  [1m[36mComment Create (5.6ms)[0m  [1m[32mINSERT INTO "comments" ("author_id", "post_id", "content", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["author_id", 4], ["post_id", 3], ["content", "commenting here!"], ["created_at", "2021-01-30 23:07:34.591476"], ["updated_at", "2021-01-30 23:07:34.591476"]]
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+Redirected to http://localhost:3000/posts/3
+Completed 302 Found in 29ms (ActiveRecord: 9.9ms | Allocations: 5698)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2021-01-30 16:07:34 -0700
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:35:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mSub Load (2.5ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 3]]
+  ↳ app/views/posts/show.html.erb:2
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 3]]
+  ↳ app/views/posts/show.html.erb:20
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:21
+  Rendered posts/show.html.erb within layouts/application (Duration: 35.9ms | Allocations: 15063)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "MElOeyn-1GKpkc3QBrQK2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+Completed 200 OK in 47ms (Views: 26.2ms | ActiveRecord: 18.9ms | Allocations: 21890)
+
+
+Started GET "/posts/3/comments/new" for 127.0.0.1 at 2021-01-30 16:08:19 -0700
+Processing by CommentsController#new as HTML
+  Parameters: {"post_id"=>"3"}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "MElOeyn-1GKpkc3QBrQK2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  Rendering comments/new.html.erb within layouts/application
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/comments/new.html.erb:1
+  Rendered comments/new.html.erb within layouts/application (Duration: 21.5ms | Allocations: 7620)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 66ms (Views: 12.9ms | ActiveRecord: 38.7ms | Allocations: 22667)
+
+
+Started POST "/comments" for 127.0.0.1 at 2021-01-30 16:08:23 -0700
+Processing by CommentsController#create as HTML
+  Parameters: {"authenticity_token"=>"z5MFomqf47kH70z6cCSDmX1UG1wYOTqTiOeV2I/SqyJenUEP0G4EWQWuvZTFl6tkHh4KWzt0DvAJNPO9QSmfdg==", "comment"=>{"post_id"=>"3", "content"=>""}}
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "MElOeyn-1GKpkc3QBrQK2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+  [1m[35m (0.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+  Rendering comments/new.html.erb within layouts/application
+  Rendered comments/new.html.erb within layouts/application (Duration: 0.4ms | Allocations: 67)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 35ms (Views: 10.3ms | ActiveRecord: 3.3ms | Allocations: 12345)
+
+
+Started POST "/comments" for 127.0.0.1 at 2021-01-30 16:08:28 -0700
+Processing by CommentsController#create as HTML
+  Parameters: {"authenticity_token"=>"4AqZr3bG1jDVSt7ozvP9nRcSj1V2kVIrct1qooxwq99xBN0CzDcx0NcLL4Z7QNVgdFieUlXcZkjzDgzHQoufiw==", "comment"=>{"post_id"=>"", "content"=>"fsdfs"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "MElOeyn-1GKpkc3QBrQK2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+  [1m[35m (0.6ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+  Rendering comments/new.html.erb within layouts/application
+  Rendered comments/new.html.erb within layouts/application (Duration: 3.4ms | Allocations: 2432)
+Completed 500 Internal Server Error in 21ms (ActiveRecord: 2.0ms | Allocations: 7561)
+
+
+
+NoMethodError - undefined method `title' for nil:NilClass:
+  app/views/comments/new.html.erb:1
+  app/controllers/comments_controller.rb:18:in `create'
+
+Started POST "/__better_errors/ad69db12c6fcb450/variables" for 127.0.0.1 at 2021-01-30 16:08:28 -0700
+Started POST "/comments" for 127.0.0.1 at 2021-01-30 16:08:46 -0700
+Processing by CommentsController#create as HTML
+  Parameters: {"authenticity_token"=>"4AqZr3bG1jDVSt7ozvP9nRcSj1V2kVIrct1qooxwq99xBN0CzDcx0NcLL4Z7QNVgdFieUlXcZkjzDgzHQoufiw==", "comment"=>{"post_id"=>"", "content"=>""}}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "MElOeyn-1GKpkc3QBrQK2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+Redirected to http://localhost:3000/subs
+Completed 302 Found in 45ms (ActiveRecord: 24.0ms | Allocations: 19232)
+
+
+Started GET "/subs" for 127.0.0.1 at 2021-01-30 16:08:46 -0700
+Processing by SubsController#index as HTML
+  Rendering subs/index.html.erb within layouts/application
+  [1m[36mSub Load (0.7ms)[0m  [1m[34mSELECT "subs".* FROM "subs"[0m
+  ↳ app/views/subs/index.html.erb:6
+  Rendered subs/index.html.erb within layouts/application (Duration: 19.3ms | Allocations: 5379)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "MElOeyn-1GKpkc3QBrQK2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+Completed 200 OK in 26ms (Views: 12.4ms | ActiveRecord: 13.5ms | Allocations: 11609)
+
+
+Started GET "/subs/3" for 127.0.0.1 at 2021-01-30 16:08:47 -0700
+Processing by SubsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mSub Load (0.6ms)[0m  [1m[34mSELECT "subs".* FROM "subs" WHERE "subs"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/subs_controller.rb:28:in `show'
+  Rendering subs/show.html.erb within layouts/application
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "MElOeyn-1GKpkc3QBrQK2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts" INNER JOIN "post_subs" ON "posts"."id" = "post_subs"."post_id" WHERE "post_subs"."sub_id" = $1[0m  [["sub_id", 3]]
+  ↳ app/views/subs/show.html.erb:17
+  Rendered subs/show.html.erb within layouts/application (Duration: 49.8ms | Allocations: 11847)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 64ms (Views: 42.9ms | ActiveRecord: 16.4ms | Allocations: 17618)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2021-01-30 16:08:49 -0700
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:35:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mSub Load (1.2ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 3]]
+  ↳ app/views/posts/show.html.erb:2
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 3]]
+  ↳ app/views/posts/show.html.erb:20
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:21
+  Rendered posts/show.html.erb within layouts/application (Duration: 15.7ms | Allocations: 6963)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "MElOeyn-1GKpkc3QBrQK2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+Completed 200 OK in 35ms (Views: 25.9ms | ActiveRecord: 3.5ms | Allocations: 13406)
+
+
+Started GET "/posts/3/comments/new" for 127.0.0.1 at 2021-01-30 16:08:50 -0700
+Processing by CommentsController#new as HTML
+  Parameters: {"post_id"=>"3"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "MElOeyn-1GKpkc3QBrQK2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  Rendering comments/new.html.erb within layouts/application
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/comments/new.html.erb:1
+  Rendered comments/new.html.erb within layouts/application (Duration: 4.9ms | Allocations: 998)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 23ms (Views: 19.0ms | ActiveRecord: 0.9ms | Allocations: 6817)
+
+
+Started POST "/comments" for 127.0.0.1 at 2021-01-30 16:08:55 -0700
+Processing by CommentsController#create as HTML
+  Parameters: {"authenticity_token"=>"3cAyE6LHkPUEMBOkY2SXiFvSfZv38uM5YipVv9eydKBMzna+GDZ3FQZx4srW1791OJhsnNS/11rj+TPaGUlA9A==", "comment"=>{"post_id"=>"3", "content"=>"new comment again"}}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "MElOeyn-1GKpkc3QBrQK2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+  [1m[36mComment Create (1.0ms)[0m  [1m[32mINSERT INTO "comments" ("author_id", "post_id", "content", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["author_id", 4], ["post_id", 3], ["content", "new comment again"], ["created_at", "2021-01-30 23:08:55.308704"], ["updated_at", "2021-01-30 23:08:55.308704"]]
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+Redirected to http://localhost:3000/posts/3
+Completed 302 Found in 18ms (ActiveRecord: 3.1ms | Allocations: 5697)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2021-01-30 16:08:55 -0700
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:35:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mSub Load (1.1ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 3]]
+  ↳ app/views/posts/show.html.erb:2
+  [1m[36mComment Load (0.4ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 3]]
+  ↳ app/views/posts/show.html.erb:20
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:21
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:21
+  Rendered posts/show.html.erb within layouts/application (Duration: 8.3ms | Allocations: 3365)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "MElOeyn-1GKpkc3QBrQK2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+Completed 200 OK in 21ms (Views: 16.5ms | ActiveRecord: 2.5ms | Allocations: 9598)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2021-01-31 13:07:46 -0700
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (2.9ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:35:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mSub Load (4.8ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 3]]
+  ↳ app/views/posts/show.html.erb:2
+  [1m[36mComment Load (1.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 3]]
+  ↳ app/views/posts/show.html.erb:20
+  [1m[36mUser Load (1.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:21
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:21
+  Rendered posts/show.html.erb within layouts/application (Duration: 21.5ms | Allocations: 3374)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "MElOeyn-1GKpkc3QBrQK2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+Completed 200 OK in 55ms (Views: 37.7ms | ActiveRecord: 12.4ms | Allocations: 9726)
+
+
+Started GET "/posts/3/comments/new" for 127.0.0.1 at 2021-01-31 13:07:48 -0700
+Processing by CommentsController#new as HTML
+  Parameters: {"post_id"=>"3"}
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "MElOeyn-1GKpkc3QBrQK2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  Rendering comments/new.html.erb within layouts/application
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/comments/new.html.erb:1
+  Rendered comments/new.html.erb within layouts/application (Duration: 4.3ms | Allocations: 819)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 21ms (Views: 15.8ms | ActiveRecord: 1.7ms | Allocations: 6479)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2021-01-31 14:40:21 -0700
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:35:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mSub Load (2.5ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 3]]
+  ↳ app/views/posts/show.html.erb:2
+  [1m[36mComment Load (1.3ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 3]]
+  ↳ app/views/posts/show.html.erb:20
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:21
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:21
+  Rendered posts/show.html.erb within layouts/application (Duration: 33.3ms | Allocations: 27353)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "MElOeyn-1GKpkc3QBrQK2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+Completed 200 OK in 53ms (Views: 37.5ms | ActiveRecord: 6.2ms | Allocations: 40367)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2021-01-31 14:40:59 -0700
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:35:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mSub Load (1.3ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 3]]
+  ↳ app/views/posts/show.html.erb:2
+  [1m[36mComment Load (1.0ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 3]]
+  ↳ app/views/posts/show.html.erb:20
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:21
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:21
+  Rendered posts/show.html.erb within layouts/application (Duration: 15.5ms | Allocations: 3754)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "MElOeyn-1GKpkc3QBrQK2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+Completed 200 OK in 40ms (Views: 31.6ms | ActiveRecord: 4.7ms | Allocations: 11032)
+
+
+Started GET "/comments/1" for 127.0.0.1 at 2021-01-31 14:41:04 -0700
+Processing by CommentsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:23:in `show'
+  Rendering comments/show.html.erb within layouts/application
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/comments/show.html.erb:1
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/comments/show.html.erb:2
+  Rendered comments/show.html.erb within layouts/application (Duration: 4.6ms | Allocations: 1828)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "MElOeyn-1GKpkc3QBrQK2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+Completed 200 OK in 27ms (Views: 21.5ms | ActiveRecord: 2.5ms | Allocations: 8743)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2021-01-31 15:40:54 -0700
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (1.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:35:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mSub Load (3.1ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 3]]
+  ↳ app/views/posts/show.html.erb:2
+  [1m[36mComment Load (1.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 3]]
+  ↳ app/views/posts/show.html.erb:20
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:21
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:21
+  Rendered posts/show.html.erb within layouts/application (Duration: 22.6ms | Allocations: 3764)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "MElOeyn-1GKpkc3QBrQK2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+Completed 200 OK in 51ms (Views: 37.7ms | ActiveRecord: 8.6ms | Allocations: 11203)
+
+
+Started GET "/comments/1" for 127.0.0.1 at 2021-01-31 15:40:55 -0700
+Processing by CommentsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:23:in `show'
+  Rendering comments/show.html.erb within layouts/application
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/comments/show.html.erb:1
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/comments/show.html.erb:2
+  Rendered comments/show.html.erb within layouts/application (Duration: 8.3ms | Allocations: 1784)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "MElOeyn-1GKpkc3QBrQK2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+Completed 200 OK in 30ms (Views: 23.2ms | ActiveRecord: 3.5ms | Allocations: 8559)
+
+
+Started GET "/comments/1" for 127.0.0.1 at 2021-01-31 15:41:09 -0700
+Processing by CommentsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:23:in `show'
+  Rendering comments/show.html.erb within layouts/application
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/comments/show.html.erb:1
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/comments/show.html.erb:2
+  Rendered comments/show.html.erb within layouts/application (Duration: 7.7ms | Allocations: 1780)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "MElOeyn-1GKpkc3QBrQK2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+Completed 200 OK in 30ms (Views: 24.1ms | ActiveRecord: 2.8ms | Allocations: 9054)
+
+
+Started POST "/comments" for 127.0.0.1 at 2021-01-31 15:42:25 -0700
+Processing by CommentsController#create as HTML
+  Parameters: {"authenticity_token"=>"ML7hFvFq/K3XTaB6vbX7w/yyX5JAtnlj4vNg7N10RsahsKW7S5sbTdUMURQIBtM+n/hOlWP7TQBjIAaJE49ykg==", "comment"=>{"post_id"=>"3", "parent_comment_id"=>"1", "content"=>"reply to main comment!"}}
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "MElOeyn-1GKpkc3QBrQK2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+  [1m[36mComment Create (2.2ms)[0m  [1m[32mINSERT INTO "comments" ("author_id", "post_id", "content", "parent_comment_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["author_id", 4], ["post_id", 3], ["content", "reply to main comment!"], ["parent_comment_id", 1], ["created_at", "2021-01-31 22:42:25.659635"], ["updated_at", "2021-01-31 22:42:25.659635"]]
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+  [1m[35m (2.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/comments_controller.rb:14:in `create'
+Redirected to http://localhost:3000/posts/3
+Completed 302 Found in 26ms (ActiveRecord: 7.3ms | Allocations: 5870)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2021-01-31 15:42:25 -0700
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:35:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mSub Load (1.5ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 3]]
+  ↳ app/views/posts/show.html.erb:2
+  [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 3]]
+  ↳ app/views/posts/show.html.erb:20
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:21
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:21
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:21
+  Rendered posts/show.html.erb within layouts/application (Duration: 16.7ms | Allocations: 4498)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "MElOeyn-1GKpkc3QBrQK2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+Completed 200 OK in 40ms (Views: 31.4ms | ActiveRecord: 4.7ms | Allocations: 11257)
+
+
+Started GET "/comments/3" for 127.0.0.1 at 2021-01-31 15:42:27 -0700
+Processing by CommentsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:23:in `show'
+  Rendering comments/show.html.erb within layouts/application
+  [1m[36mPost Load (0.5ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/comments/show.html.erb:1
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/comments/show.html.erb:2
+  Rendered comments/show.html.erb within layouts/application (Duration: 6.2ms | Allocations: 1607)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (1.1ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "MElOeyn-1GKpkc3QBrQK2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+Completed 200 OK in 25ms (Views: 19.4ms | ActiveRecord: 3.0ms | Allocations: 7828)
+
+
+Started GET "/comments/1" for 127.0.0.1 at 2021-01-31 15:42:30 -0700
+Processing by CommentsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mComment Load (1.1ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:23:in `show'
+  Rendering comments/show.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/comments/show.html.erb:1
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/comments/show.html.erb:2
+  Rendered comments/show.html.erb within layouts/application (Duration: 6.7ms | Allocations: 1598)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "MElOeyn-1GKpkc3QBrQK2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+Completed 200 OK in 27ms (Views: 20.9ms | ActiveRecord: 2.6ms | Allocations: 7810)
+
+
+  [1m[36mPost Load (1.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts"[0m
+  [1m[36mPost Load (0.8ms)[0m  [1m[34mSELECT "posts".* FROM "posts" ORDER BY "posts"."id" DESC LIMIT $1[0m  [["LIMIT", 1]]
+  [1m[36mComment Load (1.2ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 AND "comments"."parent_comment_id" IS NULL[0m  [["post_id", 3]]
+Started GET "/posts/3" for 127.0.0.1 at 2021-01-31 15:53:53 -0700
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:35:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mSub Load (2.7ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 3]]
+  ↳ app/views/posts/show.html.erb:2
+  [1m[36mComment Load (1.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 AND "comments"."parent_comment_id" IS NULL[0m  [["post_id", 3]]
+  ↳ app/views/posts/show.html.erb:20
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:21
+  Rendered shared/_comments.html.erb (Duration: 144.8ms | Allocations: 153491)
+  Rendered posts/show.html.erb within layouts/application (Duration: 175.1ms | Allocations: 180274)
+Completed 500 Internal Server Error in 188ms (ActiveRecord: 6.8ms | Allocations: 187750)
+
+
+
+NameError - undefined local variable or method `comment' for #<#<Class:0x00007fb1631c42f8>:0x00007fb1631c1d78>
+Did you mean?  comment_url:
+  app/views/shared/_comments.html.erb:2
+  app/views/posts/show.html.erb:23
+  app/views/posts/show.html.erb:20
+  app/controllers/posts_controller.rb:36:in `show'
+
+Started POST "/__better_errors/55e1886d8d0e7382/variables" for 127.0.0.1 at 2021-01-31 15:53:54 -0700
+Started GET "/posts/3" for 127.0.0.1 at 2021-01-31 16:01:50 -0700
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (1.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:35:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mSub Load (4.7ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 3]]
+  ↳ app/views/posts/show.html.erb:2
+  [1m[36mComment Load (1.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 AND "comments"."parent_comment_id" IS NULL[0m  [["post_id", 3]]
+  ↳ app/views/posts/show.html.erb:20
+  [1m[36mUser Load (2.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:21
+  Rendered shared/_comments.html.erb (Duration: 2.1ms | Allocations: 2527)
+  Rendered posts/show.html.erb within layouts/application (Duration: 27.8ms | Allocations: 5855)
+Completed 500 Internal Server Error in 39ms (ActiveRecord: 10.1ms | Allocations: 7717)
+
+
+
+TypeError - no implicit conversion of Symbol into Integer:
+  app/views/shared/_comments.html.erb:2
+  app/views/posts/show.html.erb:23
+  app/views/posts/show.html.erb:20
+  app/controllers/posts_controller.rb:36:in `show'
+
+Started POST "/__better_errors/59edd8f46d34a3e3/variables" for 127.0.0.1 at 2021-01-31 16:01:50 -0700
+Started GET "/posts/3" for 127.0.0.1 at 2021-01-31 16:04:14 -0700
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:35:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mSub Load (1.9ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 3]]
+  ↳ app/views/posts/show.html.erb:2
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 AND "comments"."parent_comment_id" IS NULL[0m  [["post_id", 3]]
+  ↳ app/views/posts/show.html.erb:20
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:21
+  Rendered posts/show.html.erb within layouts/application (Duration: 20.7ms | Allocations: 6374)
+Completed 500 Internal Server Error in 29ms (ActiveRecord: 3.7ms | Allocations: 8094)
+
+
+
+NoMethodError - undefined method `keys' for #<Array:0x00007fb131994f00>:
+  app/views/posts/show.html.erb:23
+  app/views/posts/show.html.erb:20
+  app/controllers/posts_controller.rb:36:in `show'
+
+Started POST "/__better_errors/2f1075109b96ef1c/variables" for 127.0.0.1 at 2021-01-31 16:04:14 -0700
+Started POST "/__better_errors/2f1075109b96ef1c/variables" for 127.0.0.1 at 2021-01-31 16:04:43 -0700
+Started POST "/__better_errors/2f1075109b96ef1c/variables" for 127.0.0.1 at 2021-01-31 16:04:44 -0700
+Started GET "/posts/3" for 127.0.0.1 at 2021-01-31 16:05:16 -0700
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:35:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mSub Load (1.4ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 3]]
+  ↳ app/views/posts/show.html.erb:2
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 AND "comments"."parent_comment_id" IS NULL[0m  [["post_id", 3]]
+  ↳ app/views/posts/show.html.erb:20
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:21
+  Rendered posts/show.html.erb within layouts/application (Duration: 16.3ms | Allocations: 6372)
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 3.0ms | Allocations: 8093)
+
+
+
+NoMethodError - undefined method `keys' for #<Array:0x00007fb13195d438>:
+  app/views/posts/show.html.erb:23
+  app/views/posts/show.html.erb:20
+  app/controllers/posts_controller.rb:36:in `show'
+
+Started POST "/__better_errors/ae9b69eb2b36d383/variables" for 127.0.0.1 at 2021-01-31 16:05:16 -0700
+Started GET "/posts/3" for 127.0.0.1 at 2021-01-31 16:07:00 -0700
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:35:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mSub Load (1.8ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 3]]
+  ↳ app/views/posts/show.html.erb:2
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 AND "comments"."parent_comment_id" IS NULL[0m  [["post_id", 3]]
+  ↳ app/views/posts/show.html.erb:20
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:21
+  Rendered shared/_comments.html.erb (Duration: 2.0ms | Allocations: 2531)
+  Rendered posts/show.html.erb within layouts/application (Duration: 16.4ms | Allocations: 5848)
+Completed 500 Internal Server Error in 23ms (ActiveRecord: 3.7ms | Allocations: 7569)
+
+
+
+TypeError - no implicit conversion of Symbol into Integer:
+  app/views/shared/_comments.html.erb:2
+  app/views/posts/show.html.erb:23
+  app/views/posts/show.html.erb:20
+  app/controllers/posts_controller.rb:36:in `show'
+
+Started POST "/__better_errors/50029280a6450f21/variables" for 127.0.0.1 at 2021-01-31 16:07:00 -0700
+Started GET "/posts/3" for 127.0.0.1 at 2021-01-31 16:07:52 -0700
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (1.0ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:35:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  Rendered posts/show.html.erb within layouts/application (Duration: 2.2ms | Allocations: 2416)
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 1.0ms | Allocations: 4137)
+
+
+
+ActionView::SyntaxErrorInTemplate - Encountered a syntax error while rendering template: check <h1><%= @post.title %></h1>
+<h2>in <% @post.subs.each do |sub|%>
+    <%= link_to sub.title, sub_url(sub.id) %>
+  <% end %>
+</h2>
+<% if @post.url %>
+# <h3><a href="<%= @post.url %>">Link</a></h3>
+<% end %>
+<p><%= @post.content %></p>
+<h3>Comments</h3>
+<%= link_to 'Add a comment', new_post_comment_url(@post.id) %>
+<ul>
+  <% @post.top_level_comments.each do |comment| %>
+    <li><%= comment.content %><br><em>by <%= comment.author.username %></em>
+        <%= link_to 'see more', comment_url(comment.id) %>
+        <%= render 'shared/comments', comment: comment]%>
+    </li>
+  <% end %>
+</ul>:
+  app/controllers/posts_controller.rb:36:in `show'
+
+Started POST "/__better_errors/a8626d59d720f0ef/variables" for 127.0.0.1 at 2021-01-31 16:07:52 -0700
+Started GET "/posts/3" for 127.0.0.1 at 2021-01-31 16:08:17 -0700
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:35:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mSub Load (1.5ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 3]]
+  ↳ app/views/posts/show.html.erb:2
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 AND "comments"."parent_comment_id" IS NULL[0m  [["post_id", 3]]
+  ↳ app/views/posts/show.html.erb:20
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:21
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 1]]
+  ↳ app/views/shared/_comments.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/shared/_comments.html.erb:3
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 3]]
+  ↳ app/views/shared/_comments.html.erb:2
+  Rendered shared/_comments.html.erb (Duration: 2.7ms | Allocations: 806)
+  Rendered shared/_comments.html.erb (Duration: 12.4ms | Allocations: 4257)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:21
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 2]]
+  ↳ app/views/shared/_comments.html.erb:2
+  Rendered shared/_comments.html.erb (Duration: 3.3ms | Allocations: 785)
+  Rendered posts/show.html.erb within layouts/application (Duration: 32.9ms | Allocations: 9141)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "MElOeyn-1GKpkc3QBrQK2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+Completed 200 OK in 60ms (Views: 51.6ms | ActiveRecord: 5.8ms | Allocations: 16435)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2021-01-31 16:09:36 -0700
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.7ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:35:in `show'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mSub Load (1.2ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 3]]
+  ↳ app/views/posts/show.html.erb:2
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1 AND "comments"."parent_comment_id" IS NULL[0m  [["post_id", 3]]
+  ↳ app/views/posts/show.html.erb:20
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:21
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 1]]
+  ↳ app/views/shared/_comments.html.erb:2
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/shared/_comments.html.erb:3
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 3]]
+  ↳ app/views/shared/_comments.html.erb:2
+  Rendered shared/_comments.html.erb (Duration: 3.0ms | Allocations: 806)
+  Rendered shared/_comments.html.erb (Duration: 8.2ms | Allocations: 2596)
+  [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/posts/show.html.erb:21
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."parent_comment_id" = $1[0m  [["parent_comment_id", 2]]
+  ↳ app/views/shared/_comments.html.erb:2
+  Rendered shared/_comments.html.erb (Duration: 3.6ms | Allocations: 785)
+  Rendered posts/show.html.erb within layouts/application (Duration: 27.5ms | Allocations: 7479)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "MElOeyn-1GKpkc3QBrQK2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+Completed 200 OK in 55ms (Views: 45.3ms | ActiveRecord: 5.7ms | Allocations: 14746)
+
+
+Started GET "/comments/3" for 127.0.0.1 at 2021-01-31 16:09:41 -0700
+Processing by CommentsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mComment Load (0.9ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:23:in `show'
+  Rendering comments/show.html.erb within layouts/application
+  [1m[36mPost Load (0.2ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/comments/show.html.erb:1
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/comments/show.html.erb:2
+  Rendered comments/show.html.erb within layouts/application (Duration: 5.7ms | Allocations: 1967)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "MElOeyn-1GKpkc3QBrQK2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+Completed 200 OK in 22ms (Views: 17.0ms | ActiveRecord: 2.1ms | Allocations: 8864)
+
+
+Started GET "/comments/2" for 127.0.0.1 at 2021-01-31 16:09:44 -0700
+Processing by CommentsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mComment Load (0.8ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."id" = $1 LIMIT $2[0m  [["id", 2], ["LIMIT", 1]]
+  ↳ app/controllers/comments_controller.rb:23:in `show'
+  Rendering comments/show.html.erb within layouts/application
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/views/comments/show.html.erb:1
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/views/comments/show.html.erb:2
+  Rendered comments/show.html.erb within layouts/application (Duration: 6.4ms | Allocations: 1598)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "MElOeyn-1GKpkc3QBrQK2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+Completed 200 OK in 26ms (Views: 21.2ms | ActiveRecord: 2.3ms | Allocations: 7801)
+
+
