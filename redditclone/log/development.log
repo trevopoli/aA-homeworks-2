@@ -3030,3 +3030,287 @@ Processing by PostsController#show as HTML
 Completed 200 OK in 54ms (Views: 20.9ms | ActiveRecord: 7.1ms | Allocations: 39942)
 
 
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT pg_try_advisory_lock(8218155208135281360)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Migrating to CreateVotes (20210201005054)
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  [1m[35m (6.9ms)[0m  [1m[35mCREATE TABLE "votes" ("id" bigserial primary key, "user_id" integer NOT NULL, "value" integer NOT NULL, "votable_id" integer NOT NULL, "votable_type" character varying NOT NULL, "created_at" timestamp(6) NOT NULL, "updated_at" timestamp(6) NOT NULL)[0m
+  [1m[35m (0.8ms)[0m  [1m[35mCREATE  INDEX  "index_votes_on_user_id" ON "votes"  ("user_id")[0m
+  [1m[35m (0.9ms)[0m  [1m[35mCREATE  INDEX  "index_votes_on_votable_type_and_votable_id" ON "votes"  ("votable_type", "votable_id")[0m
+  [1m[35m (0.7ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_votes_on_user_id_and_votable_type_and_votable_id" ON "votes"  ("user_id", "votable_type", "votable_id")[0m
+  [1m[36mprimary::SchemaMigration Create (0.3ms)[0m  [1m[32mINSERT INTO "schema_migrations" ("version") VALUES ($1) RETURNING "version"[0m  [["version", "20210201005054"]]
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  [1m[36mActiveRecord::InternalMetadata Load (0.6ms)[0m  [1m[34mSELECT "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT pg_advisory_unlock(8218155208135281360)[0m
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Started GET "/posts/3" for 127.0.0.1 at 2021-01-31 18:11:17 -0700
+  [1m[35m (1.0ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.9ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:23:in `show'
+  [1m[36mComment Load (1.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 3]]
+  ↳ app/models/post.rb:22:in `comments_by_parent_id'
+  [1m[36mUser Load (1.0ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1[0m  [["id", 4]]
+  ↳ app/models/post.rb:22:in `comments_by_parent_id'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mSub Load (2.7ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 3]]
+  ↳ app/views/posts/show.html.erb:2
+  Rendered posts/show.html.erb within layouts/application (Duration: 171.4ms | Allocations: 165285)
+Completed 500 Internal Server Error in 203ms (ActiveRecord: 6.4ms | Allocations: 187232)
+
+
+
+NameError - undefined local variable or method `values' for #<#<Class:0x00007fb13187bfb0>:0x00007fb131873040>:
+  app/views/posts/show.html.erb:12
+  app/controllers/posts_controller.rb:25:in `show'
+
+Started POST "/__better_errors/ef12518b66e63dd1/variables" for 127.0.0.1 at 2021-01-31 18:11:18 -0700
+Started GET "/posts/3" for 127.0.0.1 at 2021-01-31 18:11:33 -0700
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:23:in `show'
+  [1m[36mComment Load (0.6ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 3]]
+  ↳ app/models/post.rb:22:in `comments_by_parent_id'
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1[0m  [["id", 4]]
+  ↳ app/models/post.rb:22:in `comments_by_parent_id'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mSub Load (1.2ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 3]]
+  ↳ app/views/posts/show.html.erb:2
+  Rendered posts/show.html.erb within layouts/application (Duration: 217.0ms | Allocations: 189049)
+Completed 500 Internal Server Error in 229ms (ActiveRecord: 2.9ms | Allocations: 191885)
+
+
+
+NameError - undefined local variable or method `values' for #<#<Class:0x00007fb13187bfb0>:0x00007fb160fe3968>:
+  app/views/posts/show.html.erb:12
+  app/controllers/posts_controller.rb:25:in `show'
+
+Started POST "/__better_errors/3bc246c4210909a8/variables" for 127.0.0.1 at 2021-01-31 18:11:34 -0700
+Started GET "/posts/3" for 127.0.0.1 at 2021-01-31 18:12:20 -0700
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (1.1ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:23:in `show'
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 3]]
+  ↳ app/models/post.rb:22:in `comments_by_parent_id'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1[0m  [["id", 4]]
+  ↳ app/models/post.rb:22:in `comments_by_parent_id'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mSub Load (1.6ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 3]]
+  ↳ app/views/posts/show.html.erb:2
+  [1m[35m (2.2ms)[0m  [1m[34mSELECT SUM("votes"."value") FROM "votes" WHERE "votes"."votable_id" = $1 AND "votes"."votable_type" = $2[0m  [["votable_id", 3], ["votable_type", "Post"]]
+  ↳ app/models/post.rb:29:in `vote_count'
+  Rendered shared/_comments.html.erb (Duration: 0.0ms | Allocations: 7)
+  Rendered shared/_comments.html.erb (Duration: 1.8ms | Allocations: 303)
+  Rendered shared/_comments.html.erb (Duration: 0.0ms | Allocations: 6)
+  Rendered posts/show.html.erb within layouts/application (Duration: 44.3ms | Allocations: 8218)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "MElOeyn-1GKpkc3QBrQK2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+Completed 200 OK in 77ms (Views: 55.3ms | ActiveRecord: 11.2ms | Allocations: 17346)
+
+
+Started GET "/posts/3/upvote" for 127.0.0.1 at 2021-01-31 18:12:24 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/posts/3/upvote"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/posts/3" for 127.0.0.1 at 2021-01-31 18:12:26 -0700
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (1.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:23:in `show'
+  [1m[36mComment Load (0.7ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 3]]
+  ↳ app/models/post.rb:22:in `comments_by_parent_id'
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1[0m  [["id", 4]]
+  ↳ app/models/post.rb:22:in `comments_by_parent_id'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mSub Load (1.5ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 3]]
+  ↳ app/views/posts/show.html.erb:2
+  [1m[35m (0.8ms)[0m  [1m[34mSELECT SUM("votes"."value") FROM "votes" WHERE "votes"."votable_id" = $1 AND "votes"."votable_type" = $2[0m  [["votable_id", 3], ["votable_type", "Post"]]
+  ↳ app/models/post.rb:29:in `vote_count'
+  Rendered shared/_comments.html.erb (Duration: 0.0ms | Allocations: 7)
+  Rendered shared/_comments.html.erb (Duration: 1.4ms | Allocations: 303)
+  Rendered shared/_comments.html.erb (Duration: 0.1ms | Allocations: 6)
+  Rendered posts/show.html.erb within layouts/application (Duration: 13.4ms | Allocations: 3056)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.9ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "MElOeyn-1GKpkc3QBrQK2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+Completed 200 OK in 47ms (Views: 31.3ms | ActiveRecord: 5.8ms | Allocations: 12164)
+
+
+Started GET "/posts/3/upvote" for 127.0.0.1 at 2021-01-31 18:12:28 -0700
+  
+ActionController::RoutingError (No route matches [GET] "/posts/3/upvote"):
+  
+actionpack (6.0.3.4) lib/action_dispatch/middleware/debug_exceptions.rb:36:in `call'
+web-console (4.1.0) lib/web_console/middleware.rb:132:in `call_app'
+web-console (4.1.0) lib/web_console/middleware.rb:28:in `block in call'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `catch'
+web-console (4.1.0) lib/web_console/middleware.rb:17:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (6.0.3.4) lib/rails/rack/logger.rb:37:in `call_app'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `block in tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (6.0.3.4) lib/active_support/tagged_logging.rb:80:in `tagged'
+railties (6.0.3.4) lib/rails/rack/logger.rb:26:in `call'
+sprockets-rails (3.2.2) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.2.3) lib/rack/method_override.rb:24:in `call'
+rack (2.2.3) lib/rack/runtime.rb:22:in `call'
+activesupport (6.0.3.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/static.rb:126:in `call'
+rack (2.2.3) lib/rack/sendfile.rb:110:in `call'
+actionpack (6.0.3.4) lib/action_dispatch/middleware/host_authorization.rb:82:in `call'
+webpacker (4.3.0) lib/webpacker/dev_server_proxy.rb:23:in `perform_request'
+rack-proxy (0.6.5) lib/rack/proxy.rb:57:in `call'
+railties (6.0.3.4) lib/rails/engine.rb:527:in `call'
+puma (4.3.7) lib/puma/configuration.rb:228:in `call'
+puma (4.3.7) lib/puma/server.rb:713:in `handle_request'
+puma (4.3.7) lib/puma/server.rb:472:in `process_client'
+puma (4.3.7) lib/puma/server.rb:328:in `block in run'
+puma (4.3.7) lib/puma/thread_pool.rb:134:in `block in spawn_thread'
+Started GET "/posts/3/upvote" for 127.0.0.1 at 2021-01-31 18:14:02 -0700
+Processing by PostsController#upvote as HTML
+  Parameters: {"id"=>"3"}
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 13.2ms | Allocations: 7462)
+
+
+
+NoMethodError - undefined method `imagagable_id=' for #<Vote:0x00007fb132826960>:
+  app/controllers/posts_controller.rb:63:in `vote'
+  app/controllers/posts_controller.rb:33:in `upvote'
+
+Started POST "/__better_errors/bb64e39f85488dae/variables" for 127.0.0.1 at 2021-01-31 18:14:02 -0700
+Started GET "/posts/3/upvote" for 127.0.0.1 at 2021-01-31 18:14:36 -0700
+Processing by PostsController#upvote as HTML
+  Parameters: {"id"=>"3"}
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 12.8ms | Allocations: 7277)
+
+
+
+NoMethodError - undefined method `imageable_id=' for #<Vote:0x00007fb140c92180>:
+  app/controllers/posts_controller.rb:63:in `vote'
+  app/controllers/posts_controller.rb:33:in `upvote'
+
+Started POST "/__better_errors/353389a65ac1faed/variables" for 127.0.0.1 at 2021-01-31 18:14:36 -0700
+Started GET "/posts/3/upvote" for 127.0.0.1 at 2021-01-31 18:15:10 -0700
+Processing by PostsController#upvote as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35m (0.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:66:in `vote'
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:66:in `vote'
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/posts_controller.rb:66:in `vote'
+Completed 422 Unprocessable Entity in 45ms (ActiveRecord: 23.7ms | Allocations: 18114)
+
+
+
+ActiveRecord::RecordInvalid - Validation failed: User must exist:
+  app/controllers/posts_controller.rb:66:in `vote'
+  app/controllers/posts_controller.rb:33:in `upvote'
+
+Started POST "/__better_errors/d8063f0de40fdc32/variables" for 127.0.0.1 at 2021-01-31 18:15:10 -0700
+Started GET "/posts/3/upvote" for 127.0.0.1 at 2021-01-31 18:15:23 -0700
+Processing by PostsController#upvote as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "MElOeyn-1GKpkc3QBrQK2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:67:in `vote'
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:67:in `vote'
+  [1m[36mPost Load (0.4ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:67:in `vote'
+  [1m[36mVote Create (1.7ms)[0m  [1m[32mINSERT INTO "votes" ("user_id", "value", "votable_id", "votable_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 4], ["value", 1], ["votable_id", 3], ["votable_type", "Post"], ["created_at", "2021-02-01 01:15:23.244428"], ["updated_at", "2021-02-01 01:15:23.244428"]]
+  ↳ app/controllers/posts_controller.rb:67:in `vote'
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/posts_controller.rb:67:in `vote'
+Redirected to http://localhost:3000/posts/3
+Completed 302 Found in 66ms (ActiveRecord: 36.0ms | Allocations: 22538)
+
+
+Started GET "/posts/3" for 127.0.0.1 at 2021-01-31 18:15:23 -0700
+Processing by PostsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mPost Load (0.3ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:23:in `show'
+  [1m[36mComment Load (0.5ms)[0m  [1m[34mSELECT "comments".* FROM "comments" WHERE "comments"."post_id" = $1[0m  [["post_id", 3]]
+  ↳ app/models/post.rb:22:in `comments_by_parent_id'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1[0m  [["id", 4]]
+  ↳ app/models/post.rb:22:in `comments_by_parent_id'
+  Rendering posts/show.html.erb within layouts/application
+  [1m[36mSub Load (0.9ms)[0m  [1m[34mSELECT "subs".* FROM "subs" INNER JOIN "post_subs" ON "subs"."id" = "post_subs"."sub_id" WHERE "post_subs"."post_id" = $1[0m  [["post_id", 3]]
+  ↳ app/views/posts/show.html.erb:2
+  [1m[35m (2.8ms)[0m  [1m[34mSELECT SUM("votes"."value") FROM "votes" WHERE "votes"."votable_id" = $1 AND "votes"."votable_type" = $2[0m  [["votable_id", 3], ["votable_type", "Post"]]
+  ↳ app/models/post.rb:29:in `vote_count'
+  Rendered shared/_comments.html.erb (Duration: 0.0ms | Allocations: 7)
+  Rendered shared/_comments.html.erb (Duration: 0.2ms | Allocations: 120)
+  Rendered shared/_comments.html.erb (Duration: 0.0ms | Allocations: 6)
+  Rendered posts/show.html.erb within layouts/application (Duration: 33.4ms | Allocations: 14338)
+[Webpacker] Everything's up-to-date. Nothing to do
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "MElOeyn-1GKpkc3QBrQK2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+Completed 200 OK in 69ms (Views: 25.1ms | ActiveRecord: 31.3ms | Allocations: 30211)
+
+
+Started GET "/posts/3/downvote" for 127.0.0.1 at 2021-01-31 18:15:25 -0700
+Processing by PostsController#downvote as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."session_token" = $1 LIMIT $2[0m  [["session_token", "MElOeyn-1GKpkc3QBrQK2A"], ["LIMIT", 1]]
+  ↳ app/controllers/application_controller.rb:13:in `current_user'
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/posts_controller.rb:67:in `vote'
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT "users".* FROM "users" WHERE "users"."id" = $1 LIMIT $2[0m  [["id", 4], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:67:in `vote'
+  [1m[36mPost Load (0.6ms)[0m  [1m[34mSELECT "posts".* FROM "posts" WHERE "posts"."id" = $1 LIMIT $2[0m  [["id", 3], ["LIMIT", 1]]
+  ↳ app/controllers/posts_controller.rb:67:in `vote'
+  [1m[36mVote Create (4.7ms)[0m  [1m[32mINSERT INTO "votes" ("user_id", "value", "votable_id", "votable_type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 4], ["value", -1], ["votable_id", 3], ["votable_type", "Post"], ["created_at", "2021-02-01 01:15:25.284810"], ["updated_at", "2021-02-01 01:15:25.284810"]]
+  ↳ app/controllers/posts_controller.rb:67:in `vote'
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/posts_controller.rb:67:in `vote'
+Completed 500 Internal Server Error in 25ms (ActiveRecord: 7.1ms | Allocations: 7828)
+
+
+
+ActiveRecord::RecordNotUnique - PG::UniqueViolation: ERROR:  duplicate key value violates unique constraint "index_votes_on_user_id_and_votable_type_and_votable_id"
+DETAIL:  Key (user_id, votable_type, votable_id)=(4, Post, 3) already exists.:
+  app/controllers/posts_controller.rb:67:in `vote'
+  app/controllers/posts_controller.rb:29:in `downvote'
+
+Started POST "/__better_errors/1a3f3f36e570079f/variables" for 127.0.0.1 at 2021-01-31 18:15:25 -0700

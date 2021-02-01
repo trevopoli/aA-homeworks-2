@@ -9,6 +9,9 @@
 # <h3><a href="<%= @post.url %>">Link</a></h3>
 <% end %>
 
+<h3>Score: <%= @post.vote_count %>
+<%= link_to 'Upvote!', upvote_post_url(@post.id) %>
+<%= link_to 'Downvote!', downvote_post_url(@post.id) %>
 
 <p><%= @post.content %></p>
 

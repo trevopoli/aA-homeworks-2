@@ -18,6 +18,20 @@ class PostsController < ApplicationController
             render :new
         end
     end
+
+    def show
+        @post = Post.find_by(id: params[:id])
+        @all_comments = @post.comments_by_parent_id
+        render :show
+    end
+
+    def downvote
+        vote(-1)
+    end
+
+    def upvote
+        vote(1)
+    end
         
     def edit
         @post = Post.find_by(id: params[:id])
@@ -31,12 +45,6 @@ class PostsController < ApplicationController
         
     end 
     
-    def show
-        @post = Post.find_by(id: params[:id])
-        @all_comments = @post.comments_by_parent_id
-        render :show
-    end
-    
     def destroy
 
     end
@@ -48,5 +56,15 @@ class PostsController < ApplicationController
 
     def self.is_current_user_author?(post)
         post.author_id == current_user.id
+    end
+
+    def vote(value)
+        vote = Vote.new(value: value)
+        vote.user_id = current_user.id
+        vote.votable_id = params[:id]
+        vote.votable_type = :Post
+
+        vote.save!
+        redirect_to post_url(params[:id])
     end
 end
