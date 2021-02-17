@@ -66,6 +66,54 @@ function isSubstring(searchString, subString) {
     return searchString.includes(subString);
 }
 
-// fixxBuzz
+// fizzBuzz
 
+function fizzBuzz(array) {
+    var found = [];
 
+    for (i = 0; i < array.length; i++) {
+        if (array[i] % 3 === 0 ^ array[i] % 5 === 0) {
+            found.push(array[i])
+        }
+    }
+
+    return found;  
+}
+
+// isPrime
+
+function isPrime(num) {
+    if (num < 2) {
+        return false;
+    }
+
+    for (i = 2; i < num; i++) {
+        if (num % i === 0) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+// sumOfNPrimes
+
+function firstNPrimes(n) {
+
+}
+
+function sumOfNPrimes(n) {
+    let sum = 0;
+    let nthPrime = 0;
+    let i = 2;
+
+    while (nthPrime < n) {
+        if (isPrime(i)){
+            sum += i
+            nthPrime++
+        }
+        i++
+    }
+
+    return sum;
+}
