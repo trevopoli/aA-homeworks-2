@@ -1,1 +1,51 @@
 /* PHASE 4: Posts */
+
+.posts {
+    margin: 20px 0 0 0;
+}
+
+.post {
+    padding: 20px 0 20px 0;
+    display: flex;
+    border-top: 1px solid lightgray;
+}
+
+.post-content {
+    width: 500px;
+    margin: 0 0 0 20px;
+}
+
+.post-content > h2 {
+    font-weight: 700;
+    font-size: 24px;
+    margin: 0 0 20px 0;
+}
+
+.post-content > p {
+    margin: 0 0 20px 0;
+}
+
+.post-content > footer {
+    display: flex;
+    justify-content: space-between;
+}
+
+.post-footer-info > li {
+    float: left;
+    display: block;
+    color: gray;
+    font-size: 14px;
+}
+
+.post-footer-info > li:nth-child(1):after,
+.post-footer-info > li:nth-child(2):after {
+    content: "\00a0\00B7\00a0\00a0";
+}
+
+.post-footer-tools > li {
+    float: right;
+}
+
+.post-footer-tools > li {
+    margin: 0 0 0 10px;
+}
