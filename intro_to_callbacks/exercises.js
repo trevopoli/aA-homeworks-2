@@ -48,7 +48,7 @@ function addNumbers(sum, numsLeft, completionCallback) {
         reader.question("Please give a number: ", function(num) {
             let parsedNum = parseInt(num);
             let newSum = sum + parsedNum;
-            console.log(sum);
+            console.log(newSum);
             addNumbers(newSum, numsLeft-1, completionCallback);
         });
     } else {
@@ -56,4 +56,90 @@ function addNumbers(sum, numsLeft, completionCallback) {
     }
 }
 
-addNumbers(0, 3, sum => console.log(`Total Sum: ${sum}`));
+// addNumbers(0, 3, sum => console.log(`Total Sum: ${sum}`));
+
+function askIfGreaterThan(el1, el2, callback){
+    reader.question(`Is ${el1} > ${el2} ?`, function(input){
+        if (input === 'yes') {
+            callback(true);
+        } else {
+            callback(false);
+        }
+    });
+}
+
+// askIfGreaterThan(4, 7, function(ans){
+//     console.log(ans);
+// });
+
+function innerBubbleSortLoop(arr, i, madeAnySwaps, outerBubbleSortLoop){
+    if (i < arr.length - 1){
+        askIfGreaterThan(arr[i], arr[i+1], function(isGreaterThan){
+            if (isGreaterThan) {
+                [arr[i], arr[i+1]] = [arr[i+1], arr[i]];
+                madeAnySwaps = true;
+            }
+            i++;
+            innerBubbleSortLoop(arr, i, madeAnySwaps, outerBubbleSortLoop);
+        });
+    } else {
+        outerBubbleSortLoop(madeAnySwaps);
+    }
+}
+
+// innerBubbleSortLoop([1,5,2,3,7,4], 0, false, function(madeAnySwaps){
+//     console.log('in outter loop');
+// });
+
+function absurdBubbleSort(arr, sortCompletionCallback){
+
+    function outerBubbleSortLoop(madeAnySwaps){
+        if (madeAnySwaps) {
+            innerBubbleSortLoop(arr, 0, false, outerBubbleSortLoop);
+        } else {
+            sortCompletionCallback(arr);
+        }
+    };
+
+    outerBubbleSortLoop(true);
+}
+
+// absurdBubbleSort([9,4,6,2,1,8,3], function(arr){
+//     console.log(`sorted: ${arr}`);
+// });
+
+Function.prototype.myBind = function(context){
+    return (() => this.apply(context));
+};
+
+function myThrottle(interval) {
+
+}
+
+Function.prototype.myThrottle = function (interval) {
+
+    let tooSoon = false;
+
+    return (...args) => {
+        if (!tooSoon) {
+            tooSoon = true;
+            setTimeout(() => tooSoon = false, interval);
+            this(...args);
+        }
+    }
+}
+
+Function.prototype.myDebounce = function (interval) {
+    
+    let timeout;
+
+    return (...args) => {
+        const fnCall = () => {
+            timeout = null;
+            this(...args);
+        }
+
+        clearTimeout(timeout);
+        timeout = setTimeout(fnCall, interval);
+    }
+}
