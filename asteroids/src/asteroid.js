@@ -1,5 +1,7 @@
 const Util = require("./util");
 const MovingObject = require("./moving_object");
+const Ship = require("./ship");
+const Bullet = require("./bullet");
 
 const DEFAULTS = {
     COLOR: "#505050",
@@ -18,5 +20,15 @@ function Asteroid (options) {
 }    
 
 Util.inherits(Asteroid, MovingObject);
+
+Asteroid.prototype.collideWith = function (otherObject) {
+    if (otherObject instanceof Ship) {
+        otherObject.relocate();
+    };
+    if (otherObject instanceof Bullet) {
+        this.game.remove(otherObject);
+        this.game.remove(this);
+    };
+}
 
 module.exports = Asteroid;
