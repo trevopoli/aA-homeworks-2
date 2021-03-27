@@ -13,10 +13,12 @@ class View {
   }
 
   makeMove($square) {
-    $square.off("click");
-    $square.text(this.game.currentPlayer);
-    $square.addClass("clicked-box");
-    $square.removeClass("box");
+    $square.off("click")
+      .text(this.game.currentPlayer)
+      .addClass("clicked-box")
+      .removeClass("box")
+      .addClass(this.game.currentPlayer);
+
 
     this.game.playMove($square.data("pos").pos);
 
@@ -28,6 +30,7 @@ class View {
       if (this.game.winner()) {
         const winnerText = this.game.winner();
         $overMessage.text(`Game Over. ${winnerText} Wins!`);
+        $(`.${this.game.winner()}`).css("background-color", "green");
       } else {
         $overMessage.text("Game Over. Draw.");
       }
