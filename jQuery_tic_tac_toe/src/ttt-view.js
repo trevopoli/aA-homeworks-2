@@ -1,24 +1,59 @@
 class View {
   constructor(game, $el) {
-    this.setupBoard($el);
+    this.game = game;
+    this.$el = $el;
+    this.setupBoard();
+    this.bindEvents();
   }
 
-  bindEvents() {}
+  bindEvents() {
+    $(".box").on("click", event => {
+      this.makeMove($(event.currentTarget));
+    });
+  }
 
-  makeMove($square) {}
+  makeMove($square) {
+    $square.off("click");
+    $square.text(this.game.currentPlayer);
+    $square.addClass("clicked-box");
+    $square.removeClass("box");
 
-  setupBoard() {}
-}
+    this.game.playMove($square.data("pos").pos);
 
-View.prototype.setupBoard = function ($el) {
-  const $grid = $("<ul>").css({"display": "flex","width": "480px", "flex-wrap": "wrap"});
+    if (this.game.isOver()) {
+      this.removeListeners();
 
-  for(i = 0; i < 9; i++) {
-    const $box = $("<li>").addClass("box");
-    $grid.append($box);
-  };
-  $el.append($grid);
+      const $overMessage = $("<h3>");
 
+      if (this.game.winner()) {
+        const winnerText = this.game.winner();
+        $overMessage.text(`Game Over. ${winnerText} Wins!`);
+      } else {
+        $overMessage.text("Game Over. Draw.");
+      }
+
+      $("body").append($overMessage);
+    }
+  }
+
+  setupBoard() {
+    const $grid = $("<ul>").css({ "display": "flex", "width": "480px", "flex-wrap": "wrap" });
+
+    for (let i = 0; i < 3; i++) {
+      for (let j = 0; j < 3; j++) {
+        const $box = $("<li>").addClass("box").data("pos", {
+          pos: [i, j]
+        });
+        $grid.append($box);
+      }
+    };
+
+    this.$el.append($grid);
+  }
+
+  removeListeners() {
+    $(".box").off("click");
+  }
 }
 
 module.exports = View;
