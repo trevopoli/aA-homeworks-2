@@ -6,9 +6,18 @@ const APIUtil = {
 
     changeFollowStatus: (id, method) => (
         $.ajax({
+            type: method,
             url: `/users/${id}/follow`,
+            dataType: 'json'
+        })
+    ),
+
+    searchUsers: query => (
+        $.ajax({
+            type: 'GET',
+            url: '/users/search',
             dataType: 'json',
-            method
+            data: {query}
         })
     )
 };
