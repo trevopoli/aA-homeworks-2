@@ -1,3 +1,5 @@
+const APIUtil = require('./api_util');
+
 class FollowToggle {
     constructor(el) {
         this.$el = $(el);
@@ -8,10 +10,23 @@ class FollowToggle {
     }
 
     render() {
-        if (this.followState === "followed") {
-            this.$el.text("Unfollow!")
-        } else {
-            this.$el.text("Follow!")
+        switch (this.followState) {
+            case 'followed':
+                this.$el.prop('disabled', false);
+                this.$el.text("Unfollow!");
+                break;
+            case 'unfollowed':
+                this.$el.prop('disabled', false);
+                this.$el.text("Follow!");
+                break;
+            case 'following':
+                this.$el.prop('disabled', true);
+                this.$el.text("Following...");
+                break;
+            case 'unfollowing':
+                this.$el.prop('disabled', true);
+                this.$el.text("Unfollowing...");
+                break;
         }
     };
 
@@ -22,24 +37,18 @@ class FollowToggle {
             event.preventDefault();
 
             if (this.followState === "unfollowed"){
-                $.ajax({
-                    type: 'POST',
-                    url: `/users/${this.userId}/follow`,
-                    dataType: 'json',
-                    success(response){
-                        followToggle.followState = "followed";
-                        followToggle.render();
-                    }
+                this.followState = "following";
+                this.render();
+                APIUtil.followUser(followToggle.userId).then(() => {
+                    followToggle.followState = "followed";
+                    followToggle.render();
                 });
             } else if (this.followState === "followed"){
-                $.ajax({
-                    type: 'DELETE',
-                    url: `/users/${this.userId}/follow`,
-                    dataType: 'json',
-                    success(response) {
-                        followToggle.followState = "unfollowed";
-                        followToggle.render();
-                    }
+                this.followState = "unfollowing";
+                this.render();
+                APIUtil.unfollowUser(followToggle.userId).then(() => {
+                    followToggle.followState = "unfollowed";
+                    followToggle.render();
                 });
             }
         });
