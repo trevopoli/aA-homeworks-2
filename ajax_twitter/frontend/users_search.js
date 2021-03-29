@@ -32,6 +32,7 @@ class UsersSearch {
             $a.attr('href', `${user.id}`);
 
             let $li = $('<li></li>');
+            $li.addClass("user");
             $li.append($a);
 
             let $followButton = $('<button></button');

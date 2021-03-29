@@ -9,22 +9,24 @@
   </head>
 
   <body>
-    <ul>
-      <li><a href="<%= feed_url %>">Feed</a></li>
-      <li><a href="<%= search_users_url %>">User Search</a></li>
-    </ul>
+    <header>
+      <ul>
+        <li><a href="<%= feed_url %>">Feed</a></li>
+        <li><a href="<%= search_users_url %>">User Search</a></li>
+      </ul>
 
-    <% if current_user %>
-      <form action="/session" method="POST">
-        <input type="hidden" name="_method" value="DELETE">
-        <input
-          type="hidden"
-          name="authenticity_token"
-          value="<%= form_authenticity_token %>">
+      <% if current_user %>
+        <form action="/session" method="POST">
+          <input type="hidden" name="_method" value="DELETE">
+          <input
+            type="hidden"
+            name="authenticity_token"
+            value="<%= form_authenticity_token %>">
 
-        <input type="submit" value="Logout!">
-      </form>
-    <% end %>
+          <input type="submit" value="Logout!">
+        </form>
+      <% end %>
+    </header>
     
     <%= yield %>
   </body>
