@@ -1,0 +1,40 @@
+.new-tweet-header {
+    padding-bottom: 5px;
+}
+
+.tweet-compose {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 300px;
+    height: 200px;
+}
+
+.tweet-compose-content {
+    border: none;
+    overflow: auto;
+    outline: none;
+
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+
+    resize: none;
+
+    border: 1px solid white;
+
+    padding: 10px 10px;
+    width: 275px;
+    height: 75px;
+    border-radius: 5px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.tweet-compose-content:focus {
+    border: 1px solid gray;
+}
+
+.tweet-compose-content::placeholder {
+  color: rgb(11, 11, 158);
+}
