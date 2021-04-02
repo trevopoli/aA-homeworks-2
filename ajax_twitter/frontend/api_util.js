@@ -28,6 +28,15 @@ const APIUtil = {
             dataType: 'json',
             data: data
         })
+    ),
+
+    fetchTweets: data => (
+        $.ajax({
+            type: 'GET',
+            url: '/feed',
+            dataType: 'json',
+            data: data
+        })
     )
 };
 
