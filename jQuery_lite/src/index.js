@@ -23,6 +23,15 @@ window.$l = function (arg) {
     }
 }
 
+$l.extend = function (base, ...otherObjects) {
+    otherObjects.forEach((obj) => {
+        for (const property in obj) {
+            base[property] = obj[property];
+        }
+    });
+    return base;
+};
+
 document.addEventListener("DOMContentLoaded", function (event) {
     _readyCallbacks.forEach(callback => callback());
 });
