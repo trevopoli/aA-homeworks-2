@@ -25,7 +25,7 @@ eval("class DOMNodeCollection {\n    constructor (elArray) {\n        this.elArr
   \**********************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const DOMNodeCollection = __webpack_require__(/*! ./dom_node_collection */ \"./src/dom_node_collection.js\");\n\nwindow.$l = function (arg) {\n    let nodeArray = null;\n\n    if (arg instanceof HTMLElement){\n        nodeArray = [arg];\n    } else { \n        nodeArray = Array.from(document.querySelectorAll(arg));\n    }\n    \n    const nodeCollection = new DOMNodeCollection(nodeArray);\n    return nodeCollection;\n}\n\n//# sourceURL=webpack:///./src/index.js?");
+eval("const DOMNodeCollection = __webpack_require__(/*! ./dom_node_collection */ \"./src/dom_node_collection.js\");\n\nconst _readyCallbacks = [];\n\nwindow.$l = function (arg) {\n    let nodeArray = null;\n\n    if (arg instanceof Function){\n        if (document.readyState === 'complete') {\n            arg();\n        } else {\n            _readyCallbacks.push(arg);\n        }\n    } else {\n        if (arg instanceof HTMLElement) {\n            nodeArray = [arg];\n        } else { \n            nodeArray = Array.from(document.querySelectorAll(arg));\n        }\n\n        const nodeCollection = new DOMNodeCollection(nodeArray);\n        return nodeCollection;\n    }\n}\n\ndocument.addEventListener(\"DOMContentLoaded\", function (event) {\n    _readyCallbacks.forEach(callback => callback());\n});\n\n//# sourceURL=webpack:///./src/index.js?");
 
 /***/ })
 
