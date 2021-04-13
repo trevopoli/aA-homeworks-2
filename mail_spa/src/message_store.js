@@ -27,12 +27,37 @@ let messages = {
 };
 
 const MessageStore = {
-    'getInboxMessages': function () {
+    getInboxMessages() {
         return messages.inbox;
     },
-    'getSentMessages': function () {
+    getSentMessages() {
         return messages.sent;
+    },
+    updateDraftField(field, value) {
+        messageDraft[field] = value;
+    },
+    sendDraft() {
+        messages.sent.push(messageDraft);
+        messageDraft = new Message();
+        localStorage.setItem('messages', JSON.stringify(messages));
+    },
+    getMessageDraft(){
+        return messageDraft;
     }
 };
+
+const user = "justatest@gmail.com"
+
+class Message {
+    constructor (from = user, to = "", subject = "", body = "") {
+        this.from = from;
+        this.to = to;
+        this.subject = subject;
+        this.body = body;
+    }
+
+}
+
+let messageDraft = new Message();
 
 module.exports = MessageStore;

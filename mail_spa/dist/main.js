@@ -9,6 +9,16 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/compose.js":
+/*!************************!*\
+  !*** ./src/compose.js ***!
+  \************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("const MessageStore = __webpack_require__(/*! ./message_store */ \"./src/message_store.js\");\n\nclass Compose {\n    constructor (){\n    }\n\n    render() {\n        const div = document.createElement(\"div\");\n        div.className = \"new-message\";\n        div.innerHTML = this.renderForm();\n\n        div.addEventListener('change', event => {\n            let target = event.target;\n            MessageStore.updateDraftField(target.name, target.value);\n        });\n\n        div.addEventListener('submit', event => {\n            event.preventDefault();\n            MessageStore.sendDraft();\n            window.location.hash = \"#inbox\";\n        });\n\n        return div;\n    }\n\n    renderForm() {\n        let currentMessage = MessageStore.getMessageDraft();\n        let html = `\n        <p class=\"new-message-header\">New Message</p>\n        <form class=\"compose-form\">\n        <input\n        placeholder='Recipient'\n        name='to'\n        type=\"text\"\n        value='${currentMessage.to}'>\n\n        <input\n        placeholder='Subject'\n        name='subject'\n        type=\"text\"\n        value='${currentMessage.subject}'>\n\n        <textarea\n        name='body'\n        rows='20'>${currentMessage.body}</textarea>\n\n        <button type=\"submit\" class=\"btn btn-primary submit-message\">Send</button>\n        </form>\n        `;\n        return html;\n    }\n}\n\nmodule.exports = Compose;\n\n//# sourceURL=webpack://mail_spa/./src/compose.js?");
+
+/***/ }),
+
 /***/ "./src/inbox.js":
 /*!**********************!*\
   !*** ./src/inbox.js ***!
@@ -25,7 +35,7 @@ eval("const MessageStore = __webpack_require__(/*! ./message_store */ \"./src/me
   \**********************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const Router = __webpack_require__(/*! ./router */ \"./src/router.js\");\nconst Inbox = __webpack_require__(/*! ./inbox */ \"./src/inbox.js\");\nconst Sent = __webpack_require__(/*! ./sent */ \"./src/sent.js\");\n\nconst ROUTES = {\n    'inbox': Inbox,\n    'sent': Sent\n}\n\n\nwindow.addEventListener('DOMContentLoaded', (event) => {\n\n    const content = document.querySelectorAll(\".content\");\n    const router = new Router(content[0], ROUTES);\n    router.start();\n\n    window.location.hash = \"#inbox\";\n\n    const sidebarNavLi = document.querySelectorAll(\".sidebar-nav li\");\n    sidebarNavLi.forEach( li => {\n        li.addEventListener('click', (event) => {\n            window.location.hash = li.innerText.toLowerCase();\n        });\n    });\n\n});\n\n//# sourceURL=webpack://mail_spa/./src/index.js?");
+eval("const Router = __webpack_require__(/*! ./router */ \"./src/router.js\");\nconst Inbox = __webpack_require__(/*! ./inbox */ \"./src/inbox.js\");\nconst Sent = __webpack_require__(/*! ./sent */ \"./src/sent.js\");\nconst Compose = __webpack_require__(/*! ./compose */ \"./src/compose.js\");\n\nconst ROUTES = {\n    'inbox': Inbox,\n    'sent': Sent,\n    'compose': Compose\n}\n\n\nwindow.addEventListener('DOMContentLoaded', (event) => {\n\n    const content = document.querySelectorAll(\".content\");\n    const router = new Router(content[0], ROUTES);\n    router.start();\n\n    window.location.hash = \"#inbox\";\n\n    const sidebarNavLi = document.querySelectorAll(\".sidebar-nav li\");\n    sidebarNavLi.forEach( li => {\n        li.addEventListener('click', (event) => {\n            window.location.hash = li.innerText.toLowerCase();\n        });\n    });\n\n});\n\n//# sourceURL=webpack://mail_spa/./src/index.js?");
 
 /***/ }),
 
@@ -35,7 +45,7 @@ eval("const Router = __webpack_require__(/*! ./router */ \"./src/router.js\");\n
   \******************************/
 /***/ ((module) => {
 
-eval("let messages = {\n    sent: [\n        {\n            to: \"friend@mail.com\",\n            subject: \"Check this out\",\n            body: \"It's so cool\"\n        },\n        {\n            to: \"person@mail.com\",\n            subject: \"zzz\",\n            body: \"so borrrring\" \n        }\n    ],\n    inbox: [\n        {\n            from: \"grandma@mail.com\",\n            subject: \"Fwd: Fwd: Fwd: Check this out\",\n            body:\n                \"Stay at home mom discovers cure for leg cramps. Doctors hate her\"\n        },\n        {\n            from: \"person@mail.com\",\n            subject: \"Questionnaire\",\n            body: \"Take this free quiz win $1000 dollars\"\n        }\n    ]\n};\n\nconst MessageStore = {\n    'getInboxMessages': function () {\n        return messages.inbox;\n    },\n    'getSentMessages': function () {\n        return messages.sent;\n    }\n};\n\nmodule.exports = MessageStore;\n\n//# sourceURL=webpack://mail_spa/./src/message_store.js?");
+eval("let messages = {\n    sent: [\n        {\n            to: \"friend@mail.com\",\n            subject: \"Check this out\",\n            body: \"It's so cool\"\n        },\n        {\n            to: \"person@mail.com\",\n            subject: \"zzz\",\n            body: \"so borrrring\" \n        }\n    ],\n    inbox: [\n        {\n            from: \"grandma@mail.com\",\n            subject: \"Fwd: Fwd: Fwd: Check this out\",\n            body:\n                \"Stay at home mom discovers cure for leg cramps. Doctors hate her\"\n        },\n        {\n            from: \"person@mail.com\",\n            subject: \"Questionnaire\",\n            body: \"Take this free quiz win $1000 dollars\"\n        }\n    ]\n};\n\nconst MessageStore = {\n    getInboxMessages() {\n        return messages.inbox;\n    },\n    getSentMessages() {\n        return messages.sent;\n    },\n    updateDraftField(field, value) {\n        messageDraft[field] = value;\n    },\n    sendDraft() {\n        messages.sent.push(messageDraft);\n        messageDraft = new Message();\n        localStorage.setItem('messages', JSON.stringify(messages));\n    },\n    getMessageDraft(){\n        return messageDraft;\n    }\n};\n\nconst user = \"justatest@gmail.com\"\n\nclass Message {\n    constructor (from = user, to = \"\", subject = \"\", body = \"\") {\n        this.from = from;\n        this.to = to;\n        this.subject = subject;\n        this.body = body;\n    }\n\n}\n\nlet messageDraft = new Message();\n\nmodule.exports = MessageStore;\n\n//# sourceURL=webpack://mail_spa/./src/message_store.js?");
 
 /***/ }),
 
