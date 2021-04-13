@@ -15,7 +15,7 @@
   \**********************/
 /***/ (() => {
 
-eval("\nwindow.addEventListener('DOMContentLoaded', (event) => {\n    const sidebarNavLi = document.querySelectorAll(\".sidebar-nav li\");\n    sidebarNavLi.forEach( li => {\n        li.addEventListener('click', (event) => {\n            window.location.hash = li.innerText.toLowerCase();\n        });\n    });\n});\n\n//# sourceURL=webpack://mail_spa/./src/index.js?");
+eval("\nwindow.addEventListener('DOMContentLoaded', (event) => {\n\n    const sidebarNavLi = document.querySelectorAll(\".sidebar-nav li\");\n    sidebarNavLi.forEach( li => {\n        li.addEventListener('click', (event) => {\n            window.location.hash = li.innerText.toLowerCase();\n        });\n    });\n    \n});\n\n//# sourceURL=webpack://mail_spa/./src/index.js?");
 
 /***/ })
 
