@@ -1,8 +1,10 @@
 const Router = require("./router");
 const Inbox = require("./inbox");
+const Sent = require("./sent");
 
 const ROUTES = {
-    'inbox': Inbox
+    'inbox': Inbox,
+    'sent': Sent
 }
 
 

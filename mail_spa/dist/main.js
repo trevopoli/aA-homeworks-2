@@ -15,7 +15,7 @@
   \**********************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const MessageStore = __webpack_require__(/*! ./message_store */ \"./src/message_store.js\");\n\nclass Inbox {\n    constructor () {\n\n    }\n\n    render () {\n        const messagesUl = document.createElement(\"messagesUl\");\n        messagesUl.className = \"messages\";\n\n        const messages = MessageStore.getInboxMessages();\n\n        messages.forEach( message => {\n            let messageNode = this.renderMessage(message);\n            messagesUl.appendChild(messageNode);\n        })\n\n        return messagesUl;\n    }\n\n    renderMessage (message) {\n        const liNode = document.createElement(\"li\");\n        liNode.className = \"message\";\n        liNode.innerHTML = `<span class=\"from\">${message.from}</span>\n                            <span class=\"subject\">${message.subject}</span>\n                            <span class=\"body\">${message.body}</span>\n                            `;\n\n        return liNode;\n    }\n}\n\nmodule.exports = Inbox;\n\n//# sourceURL=webpack://mail_spa/./src/inbox.js?");
+eval("const MessageStore = __webpack_require__(/*! ./message_store */ \"./src/message_store.js\");\n\nclass Inbox {\n    constructor () {\n    }\n\n    render () {\n        const messagesUl = document.createElement(\"messagesUl\");\n        messagesUl.className = \"messages\";\n\n        const messages = MessageStore.getInboxMessages();\n\n        messages.forEach( message => {\n            let messageNode = this.renderMessage(message);\n            messagesUl.appendChild(messageNode);\n        })\n\n        return messagesUl;\n    }\n\n    renderMessage (message) {\n        const liNode = document.createElement(\"li\");\n        liNode.className = \"message\";\n        liNode.innerHTML = `<span class=\"from\">${message.from}</span>\n                            <span class=\"subject\">${message.subject}</span>\n                            <span class=\"body\">${message.body}</span>\n                            `;\n\n        return liNode;\n    }\n}\n\nmodule.exports = Inbox;\n\n//# sourceURL=webpack://mail_spa/./src/inbox.js?");
 
 /***/ }),
 
@@ -25,7 +25,7 @@ eval("const MessageStore = __webpack_require__(/*! ./message_store */ \"./src/me
   \**********************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const Router = __webpack_require__(/*! ./router */ \"./src/router.js\");\nconst Inbox = __webpack_require__(/*! ./inbox */ \"./src/inbox.js\");\n\nconst ROUTES = {\n    'inbox': Inbox\n}\n\n\nwindow.addEventListener('DOMContentLoaded', (event) => {\n\n    const content = document.querySelectorAll(\".content\");\n    const router = new Router(content[0], ROUTES);\n    router.start();\n\n    window.location.hash = \"#inbox\";\n\n    const sidebarNavLi = document.querySelectorAll(\".sidebar-nav li\");\n    sidebarNavLi.forEach( li => {\n        li.addEventListener('click', (event) => {\n            window.location.hash = li.innerText.toLowerCase();\n        });\n    });\n\n});\n\n//# sourceURL=webpack://mail_spa/./src/index.js?");
+eval("const Router = __webpack_require__(/*! ./router */ \"./src/router.js\");\nconst Inbox = __webpack_require__(/*! ./inbox */ \"./src/inbox.js\");\nconst Sent = __webpack_require__(/*! ./sent */ \"./src/sent.js\");\n\nconst ROUTES = {\n    'inbox': Inbox,\n    'sent': Sent\n}\n\n\nwindow.addEventListener('DOMContentLoaded', (event) => {\n\n    const content = document.querySelectorAll(\".content\");\n    const router = new Router(content[0], ROUTES);\n    router.start();\n\n    window.location.hash = \"#inbox\";\n\n    const sidebarNavLi = document.querySelectorAll(\".sidebar-nav li\");\n    sidebarNavLi.forEach( li => {\n        li.addEventListener('click', (event) => {\n            window.location.hash = li.innerText.toLowerCase();\n        });\n    });\n\n});\n\n//# sourceURL=webpack://mail_spa/./src/index.js?");
 
 /***/ }),
 
@@ -46,6 +46,16 @@ eval("let messages = {\n    sent: [\n        {\n            to: \"friend@mail.co
 /***/ ((module) => {
 
 eval("\nconst Router = function (node, routes) {\n    this.node = node;\n    this.routes = routes;\n}\n\nRouter.prototype.start = function () {\n    this.render();\n\n    window.addEventListener(\"hashchange\", event => {\n        this.render();\n    });\n}\n\nRouter.prototype.activateRoute = function () {\n    let hashName = window.location.hash.substring(1);\n    let component = this.routes[hashName];\n    return component;\n}\n\nRouter.prototype.render = function () {\n    const component = this.activateRoute();\n    this.node.innerHTML = \"\";\n    if (component) {\n        comp = new component\n        this.node.appendChild(comp.render());\n    }\n}\n\nmodule.exports = Router;\n\n//# sourceURL=webpack://mail_spa/./src/router.js?");
+
+/***/ }),
+
+/***/ "./src/sent.js":
+/*!*********************!*\
+  !*** ./src/sent.js ***!
+  \*********************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("const MessageStore = __webpack_require__(/*! ./message_store */ \"./src/message_store.js\");\n\nclass Sent {\n    constructor() {\n    }\n\n    render() {\n        const messagesUl = document.createElement(\"messagesUl\");\n        messagesUl.className = \"messages\";\n\n        const messages = MessageStore.getSentMessages();\n\n        messages.forEach(message => {\n            let messageNode = this.renderMessage(message);\n            messagesUl.appendChild(messageNode);\n        })\n\n        return messagesUl;\n    }\n\n    renderMessage(message) {\n        const liNode = document.createElement(\"li\");\n        liNode.className = \"message\";\n        liNode.innerHTML = `<span class=\"from\">${message.to}</span>\n                            <span class=\"subject\">${message.subject}</span>\n                            <span class=\"body\">${message.body}</span>\n                            `;\n\n        return liNode;\n    }\n}\n\nmodule.exports = Sent;\n\n//# sourceURL=webpack://mail_spa/./src/sent.js?");
 
 /***/ })
 
