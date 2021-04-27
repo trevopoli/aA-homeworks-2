@@ -1,9 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-const Congrats = () => <h1>I did it!</h1>;
+import Calculator from './calculator';
 
 document.addEventListener("DOMContentLoaded", () => {
     const root = document.getElementById("root");
-    ReactDOM.render(<Congrats />, root);
+    ReactDOM.render(<Calculator />, root);
 });
