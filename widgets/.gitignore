@@ -1,3 +1,4 @@
 node_modules
+frontend/config.js
 bundle.js
 bundle.js.map

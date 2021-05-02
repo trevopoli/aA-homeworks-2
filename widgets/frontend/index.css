@@ -1,0 +1,157 @@
+html, body, header, nav, h1, a,
+ul, li, strong, main, button, i,
+section, img, div, h2, p, form,
+fieldset, label, input, textarea,
+span, article, footer, time, small {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font: inherit;
+  color: inherit;
+  text-align: inherit;
+  text-decoration: inherit;
+  vertical-align: inherit;
+  box-sizing: inherit;
+  background: transparent;
+}
+
+ul {
+  list-style: none;
+}
+
+img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+input[type="password"],
+input[type="email"],
+input[type="text"],
+input[type="submit"],
+textarea,
+button {
+  /*
+  Get rid of native styling. Read more here:
+  http://css-tricks.com/almanac/properties/a/appearance/
+  */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+button,
+input[type="submit"] {
+  cursor: pointer;
+}
+
+h1 {
+  width: 500px;
+  margin: auto;
+  font-size: 26px;
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+
+.clock {
+  display: block;
+  width: 500px;
+  margin: auto;
+}
+
+.clock-content {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  vertical-align: center;
+  font-family: "Zen Dots";
+  padding: 15px 30px 0 30px;
+  background: rgb(116, 164, 211);
+  border: 1px solid #000;
+}
+
+.clock-content > p {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.tabs {
+  margin: auto;
+  display: block;
+  width: 220px;
+}
+
+.tabs-headers {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tabs-headers > li {
+  text-align: center;
+  width: 80px;
+  background:rgb(218, 178, 48);
+  border: 1px solid #000;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.tabs-headers > li:hover {
+  cursor: pointer;
+  background: black;
+  color: rgb(218, 178, 48);
+}
+
+.tabs-headers > li.active {
+  font-weight: 700;
+  border-bottom: none;
+}
+
+.pane {
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgb(218, 178, 48);
+  border-left: 1px solid black;
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+}
+
+.weather {
+  display: flex;
+  justify-content: center;
+  width: 350px;
+  padding: 30px;
+  background: rgb(46, 231, 145);
+  margin: auto;
+  border: 1px solid #000;
+  font-family: sans-serif;
+  text-align: center;
+  font-weight: 600;
+}
+
+.autocomplete {
+  margin: auto;
+  display: flex;
+  width: 250px;
+  justify-content: baseline;
+  flex-wrap: wrap;
+  background: rgb(214, 117, 51);
+  border: 1px solid #000;
+}
+
+.autocomplete > input {
+  background: rgb(236, 166, 101);
+  padding: 5px;
+  border-radius: 3px;
+  margin: 10px;
+}
+
+.autocomplete-results {
+  margin: 0 10px 10px 10px;
+}
+
+.autocomplete-results > li:hover {
+  cursor: pointer;
+}
