@@ -1,0 +1,38 @@
+h1, p {
+    display: block;
+    margin-bottom: 15px;
+    text-align: center;
+    font-family: 'Roboto Condensed';
+}
+
+.board {
+    display: flex;
+    justify-content: center;
+}
+
+.row {
+    display: flex;
+    justify-content: center;
+}
+
+.tile {
+    display: block;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    border-style: outset;
+}
+
+.tile.flagged {
+    background: lightblue;
+}
+
+.tile.bombed {
+    border-style: inset;
+    background: red;
+}
+
+.tile.revealed {
+    background: lightgray;
+    border-style: inset;
+}
