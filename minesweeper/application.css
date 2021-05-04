@@ -36,3 +36,39 @@ h1, p {
     background: lightgray;
     border-style: inset;
 }
+
+.modal {
+    background: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.modal-content {
+    padding: 20px;
+    background: rgb(243, 243, 243);
+    border-radius: 5px;
+    width: 20%;
+    margin: 35% auto;
+}
+
+.restart-button {
+    display: block;
+    width: 100px;
+    margin: auto;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    background: rgb(212, 212, 212);
+    font-size: 20px;
+}
+
+.restart-button:hover {
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}

@@ -13,6 +13,7 @@ class Game extends React.Component {
         };
 
         this.updateGame = this.updateGame.bind(this);
+        this.restartGame = this.restartGame.bind(this);
     }
 
     updateGame(tile, flagged) {
@@ -25,10 +26,34 @@ class Game extends React.Component {
         this.setState({board: this.state.board});
     }
 
+    restartGame() {
+        const board = new Minesweeper.Board(9,10);
+        this.setState({board: board});
+    }
+
     render() {
+        let board = this.state.board;
+        let modalText = "";
+        let modalHiddenClass = "hidden";
+
+        if (board.lost()) {
+            modalText = "You lost!";
+            modalHiddenClass = "";
+        } else if (board.won()){
+            modalText = "You won!";
+            modalHiddenClass = "";
+        } 
 
         return (
-            <Board board={this.state.board} updateGame={this.updateGame} />
+            <div className="game">
+                <div className={`modal ${modalHiddenClass}`}>
+                    <div className={`modal-content ${modalHiddenClass}`}>
+                        <p>{modalText}</p>
+                        <p className={`restart-button ${modalHiddenClass}`} onClick={this.restartGame}>Play again</p>
+                    </div>
+                </div>
+                <Board board={this.state.board} updateGame={this.updateGame} />
+            </div>
         );
     }
 }
