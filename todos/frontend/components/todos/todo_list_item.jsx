@@ -1,20 +1,43 @@
 import React from 'react';
+import TodoDetailViewContainer from './todo_detail_view_container';
 
-const TodoListItem = ({ todo, removeTodo, receiveTodo }) => (
-    <li>
-        <p>{todo.title}</p>
-        <button onClick={()=>receiveTodo(toggleTodoDone(todo))}>{todo.done ? "undo" : "done"}</button>
-        <button onClick={()=>removeTodo(todo)}>delete</button>
-    </li>
-);
+class TodoListItem extends React.Component {
+    constructor(props){
+        super(props);
 
-const toggleTodoDone = (todo) => {
-    if (todo.done) {
-        todo.done = false;
-    } else {
-        todo.done = true;
+        this.state = {
+            detail: false
+        };
+
+        this.toggleTodoDetail = this.toggleTodoDetail.bind(this);
     }
-    return todo;
-}
+
+    toggleTodoDone = (todo) => {
+        if (todo.done) {
+            todo.done = false;
+        } else {
+            todo.done = true;
+        }
+        return todo;
+    }
+
+    toggleTodoDetail = () => {
+        this.state.detail ? this.setState({ detail: false }) : this.setState({ detail: true });
+    }
+    
+    render () {
+        let todo = this.props.todo;
+        let receiveTodo = this.props.receiveTodo;
+
+        return (
+            <li>
+                <h4 onClick={this.toggleTodoDetail}>{todo.title}</h4>
+                <button onClick={()=>receiveTodo(this.toggleTodoDone(todo))}>{todo.done ? "undo" : "done"}</button>
+                {this.state.detail ? <TodoDetailViewContainer todo={todo} /> : null}
+            </li>
+        );
+    };
+};
+
 
 export default TodoListItem;
