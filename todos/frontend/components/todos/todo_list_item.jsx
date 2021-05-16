@@ -13,12 +13,11 @@ class TodoListItem extends React.Component {
     }
 
     toggleTodoDone = (todo) => {
-        if (todo.done) {
-            todo.done = false;
-        } else {
-            todo.done = true;
-        }
-        return todo;
+        let newTodo = Object.assign({},todo);
+
+        newTodo.done = !newTodo.done;
+        
+        return newTodo;
     }
 
     toggleTodoDetail = () => {
