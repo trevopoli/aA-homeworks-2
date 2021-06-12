@@ -3,12 +3,14 @@ import { RECEIVE_ALL_POKEMON, RECEIVE_SINGLE_POKEMON } from './../actions/pokemo
 
 const pokemonReducer = (state = {}, action) => {
   Object.freeze(state);
+  let newState = {};
 
   switch (action.type){
   case RECEIVE_ALL_POKEMON:
-    return Object.assign({}, action.pokemon, state);
+    return action.pokemon;
   case RECEIVE_SINGLE_POKEMON:
-    return action.singlePokemonData.pokemon;
+    newState[action.singlePokemonData.pokemon.id] = action.singlePokemonData.pokemon;
+    return newState;
   default:
     return state;
   }
