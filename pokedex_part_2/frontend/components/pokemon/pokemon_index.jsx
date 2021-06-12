@@ -14,8 +14,8 @@ class PokemonIndex extends React.Component{
     return (
     <section className="pokedex">
       <ul>
-      {this.props.pokemon.map((poke) => (
-        <li className="pokemon-index-item">
+      {this.props.pokemon.map((poke, idx) => (
+        <li key={idx} className="pokemon-index-item">
           <span>{poke.id}</span>
           <img src={poke.imageUrl}/>
           <span>{poke.name}</span>
