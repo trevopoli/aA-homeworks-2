@@ -5,13 +5,13 @@ import { selectAllItems, selectAllMoves, selectAllPokemon } from '../../reducers
 
 
 const mapStateToProps = state => ({
-    pokemon: selectAllPokemon(state),
+    pokemon: state.entities.pokemon,
     items: selectAllItems(state),
     moves: selectAllMoves(state)
-})
+});
 
 const mapDispatchToProps = dispatch => ({
-    requestSinglePokemon = (pokemonId) => dispatch(requestSinglePokemon(pokemonId))
+    requestSinglePokemon: (pokemonId) => dispatch(requestSinglePokemon(pokemonId))
 })
 
 
