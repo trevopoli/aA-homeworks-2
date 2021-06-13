@@ -90,7 +90,7 @@
 /*!*********************************************!*\
   !*** ./frontend/actions/pokemon_actions.js ***!
   \*********************************************/
-/*! exports provided: RECEIVE_ALL_POKEMON, RECEIVE_SINGLE_POKEMON, receiveAllPokemon, receiveSinglePokemon, requestAllPokemon, requestSinglePokemon */
+/*! exports provided: RECEIVE_ALL_POKEMON, RECEIVE_SINGLE_POKEMON, receiveAllPokemon, receiveSinglePokemon, requestAllPokemon, requestSinglePokemon, createNewPokemon */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -101,6 +101,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "receiveSinglePokemon", function() { return receiveSinglePokemon; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "requestAllPokemon", function() { return requestAllPokemon; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "requestSinglePokemon", function() { return requestSinglePokemon; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createNewPokemon", function() { return createNewPokemon; });
 /* harmony import */ var _util_api_util__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../util/api_util */ "./frontend/util/api_util.js");
 
 var RECEIVE_ALL_POKEMON = "RECEIVE_ALL_POKEMON";
@@ -128,6 +129,13 @@ var requestSinglePokemon = function requestSinglePokemon(pokemonId) {
   return function (dispatch) {
     return _util_api_util__WEBPACK_IMPORTED_MODULE_0__["fetchSinglePokemon"](pokemonId).then(function (singlePokemonData) {
       return dispatch(receiveSinglePokemon(singlePokemonData));
+    });
+  };
+};
+var createNewPokemon = function createNewPokemon(pokemon) {
+  return function (dispatch) {
+    return _util_api_util__WEBPACK_IMPORTED_MODULE_0__["createPokemon"](pokemon).then(function (pokemon) {
+      return dispatch(receiveSinglePokemon(pokemon));
     });
   };
 };
@@ -781,13 +789,14 @@ var configureStore = function configureStore() {
 /*!***********************************!*\
   !*** ./frontend/util/api_util.js ***!
   \***********************************/
-/*! exports provided: fetchAllPokemon, fetchSinglePokemon */
+/*! exports provided: fetchAllPokemon, fetchSinglePokemon, createPokemon */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchAllPokemon", function() { return fetchAllPokemon; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "fetchSinglePokemon", function() { return fetchSinglePokemon; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "createPokemon", function() { return createPokemon; });
 var fetchAllPokemon = function fetchAllPokemon() {
   return $.ajax({
     method: "GET",
@@ -798,6 +807,15 @@ var fetchSinglePokemon = function fetchSinglePokemon(pokemonId) {
   return $.ajax({
     method: "GET",
     url: "/api/pokemon/".concat(pokemonId)
+  });
+};
+var createPokemon = function createPokemon(pokemon) {
+  return $.ajax({
+    method: "POST",
+    url: "/api/pokemon/",
+    data: {
+      pokemon: pokemon
+    }
   });
 };
 
